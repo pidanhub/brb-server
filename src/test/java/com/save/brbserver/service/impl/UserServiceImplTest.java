@@ -24,8 +24,9 @@ public class UserServiceImplTest {
 	
 	@Test
 	void getByUsername () {
-		User user = userService.getByUsername("test1");
+		User user = userService.getByUsername("test");
 		assertNotNull(user);
+		System.out.println(user);
 	}
 	
 	@Test
