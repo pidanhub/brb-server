@@ -1,12 +1,5 @@
 package com.save.brbserver.service;
 
-import com.save.brbserver.entity.User;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
-
-import java.sql.Timestamp;
-import java.util.Date;
-
 /**
  * @Author:Zzs
  * @Description: call dao, declaration functions
@@ -14,8 +7,10 @@ import java.util.Date;
  **/
 
 public interface UserService {
-
-	User getByUsername(String username);
-	boolean userRegister(String username, String password, String email);
+	
+	boolean userLogin (String username, String password);
+	boolean userRegister (String username, String password, String email);
+	boolean postUserHeadSculpture(String username);
+	boolean changePassword(String username, String password);
 	
 }

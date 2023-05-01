@@ -1,14 +1,9 @@
 package com.save.brbserver.service.impl;
 
-import com.save.brbserver.entity.User;
 import com.save.brbserver.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Author:Zzs
@@ -24,9 +19,7 @@ public class UserServiceImplTest {
 	
 	@Test
 	void getByUsername () {
-		User user = userService.getByUsername("test");
-		assertNotNull(user);
-		System.out.println(user);
+		System.out.println(userService.userLogin("test","bdkjsabf;nalfdknkngal"));
 	}
 	
 	@Test

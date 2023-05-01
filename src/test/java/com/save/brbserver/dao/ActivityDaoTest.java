@@ -21,7 +21,7 @@ class ActivityDaoTest {
 	private ActivityDao activityDao;
 	@Test
 	void addActivity () {
-		boolean is = activityDao.addActivity(1,"测试活动",new Date(), "天津大学北洋园校区");
+		boolean is = activityDao.addActivity(1L,"测试活动",new Date(), "天津大学北洋园校区");
 		System.out.println(is);
 	}
 }

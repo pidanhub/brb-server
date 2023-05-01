@@ -19,11 +19,11 @@ public class ConstantFields {
 		return "/images/";
 	}
 	
-	public static String getTimeFullSprite(){
+	public static String getTimeFullSprite () {
 		return "yyyy-MM-dd HH:mm:ss";
 	}
 	
-	public static String dateToString(Date date) {
+	public static String dateToString (Date date) {
 		String strDate = null;
 		if (date != null) {
 			SimpleDateFormat sdf;
