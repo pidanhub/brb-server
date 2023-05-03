@@ -17,13 +17,14 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Activities {
+public class Activity {
 	
-	private Integer activId;
-	private Integer belongsTo;
+	private Long activId;
+	private String name;
+	private Long belongsTo;
 	private String activInfo;
 	private Timestamp startTime;
 	private String activLocation;
-	private boolean isEnd;
+	private Boolean isEnd;
 	
 }

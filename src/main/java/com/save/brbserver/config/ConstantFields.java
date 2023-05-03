@@ -1,7 +1,5 @@
 package com.save.brbserver.config;
 
-import org.springframework.context.annotation.Configuration;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -12,7 +10,6 @@ import java.util.Locale;
  * @DateTime: 2023/4/30 13:45
  **/
 
-@Configuration
 public class ConstantFields {
 	
 	public static String getImagePath () {
@@ -35,5 +32,10 @@ public class ConstantFields {
 			strDate = sdf.format(date);
 		}
 		return strDate;
+	}
+	
+	public enum FILE_OPTION {
+		HEAD,
+		ACTIVITY
 	}
 }

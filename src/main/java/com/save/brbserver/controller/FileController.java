@@ -31,6 +31,11 @@ public class FileController {
 	@Autowired
 	private UserService userService;
 	
+	private boolean fileHandler (ConstantFields.FILE_OPTION type, MultipartFile[] files) {
+		
+		return false;
+	}
+	
 	@PostMapping ("/upload-head")
 	public ResponseEntity<?> postUserHeadSculpture (@RequestParam ("username") String username, @RequestParam ("file") MultipartFile file) {
 		try {
@@ -60,5 +65,14 @@ public class FileController {
 		}
 	}
 	
-	
+	@PostMapping
+	public ResponseEntity<?> postActivityCoverImages (@RequestParam ("id") Long id, @RequestParam ("file") MultipartFile[] file) {
+		try {
+			
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "活动创建成功喵");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "创建失败，请检查网络连接或稍后重试！");
+		}
+	}
 }

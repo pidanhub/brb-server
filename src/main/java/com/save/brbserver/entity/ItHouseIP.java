@@ -11,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @Getter
 @Setter
 public class ItHouseIP {
@@ -21,5 +22,5 @@ public class ItHouseIP {
 	private Long views;
 	private Double star;
 	private Long owner;
-	private String imagePath;
+	private String coverPath;
 }

@@ -2,7 +2,7 @@ package com.save.brbserver.service.impl;
 
 import com.save.brbserver.dao.ActivityDao;
 import com.save.brbserver.dao.UserDao;
-import com.save.brbserver.entity.Activities;
+import com.save.brbserver.entity.Activity;
 import com.save.brbserver.service.ActivitiesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,20 +28,28 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 	private UserDao userDao;
 	
 	@Override
-	public List<Activities> getThoseActivitiesUserHadJoinedAndSignedIn (String username) throws SQLException {
+	public List<Activity> getThoseActivitiesUserHadJoinedAndSignedIn (String username) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
 		return activityDao.getThoseActivitiesUserHadJoinedAndSignedIn(userId);
 	}
 	
 	@Override
-	public List<Activities> getALLActivitiesUserHadJoined (String username) throws SQLException {
+	public List<Activity> getALLActivitiesUserHadJoined (String username) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
 		return activityDao.getALLActivitiesUserHadJoined(userId);
 	}
 	
 	@Override
-	public boolean addActivity (String username, String name, String info, Timestamp startTime, String location) throws SQLException {
+	public Long addActivity (String username, String name, String info, Timestamp startTime, String location) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
-		return activityDao.addActivity(name, userId, info, startTime, location);
+		Activity activity = Activity.builder()
+				.name(name)
+				.belongsTo(userId)
+				.activInfo(info)
+				.activLocation(location)
+				.startTime(startTime)
+				.build();
+		activityDao.addActivity(activity);
+		return activity.getActivId();
 	}
 }
