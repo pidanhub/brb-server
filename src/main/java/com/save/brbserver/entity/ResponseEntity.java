@@ -16,12 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseEntity<T> {
-
-	private T data;
+	
 	private int code;
-	//private String message;
+	private T data;
+	private String message;
 	
 	public static final int SUCCESS = 200;
 	public static final int NEED_TO_LOGIN = 403;
 	public static final int TOKEN_OUT_OF_TIME = 401;
+	public static final int FAILED = 500;
 }

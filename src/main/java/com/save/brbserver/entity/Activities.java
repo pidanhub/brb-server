@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * @Author:Zzs
@@ -22,7 +22,7 @@ public class Activities {
 	private Integer activId;
 	private Integer belongsTo;
 	private String activInfo;
-	private Date startTime;
+	private Timestamp startTime;
 	private String activLocation;
 	private boolean isEnd;
 	

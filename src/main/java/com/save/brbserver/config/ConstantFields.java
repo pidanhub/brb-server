@@ -16,12 +16,16 @@ import java.util.Locale;
 public class ConstantFields {
 	
 	public static String getImagePath () {
-		return "/images/";
+		return "/images";
 	}
 	
 	public static String getTimeFullSprite () {
 		return "yyyy-MM-dd HH:mm:ss";
 	}
+	
+	public static String HEAD_PATH = "/head";
+	public static String IT_HOUSE_IP_PATH = "/ip";
+	public static String ACTIVITY_PATH = "/activity";
 	
 	public static String dateToString (Date date) {
 		String strDate = null;

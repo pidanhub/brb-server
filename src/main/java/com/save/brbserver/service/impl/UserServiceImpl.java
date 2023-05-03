@@ -1,13 +1,15 @@
 package com.save.brbserver.service.impl;
 
-import com.save.brbserver.config.ConstantFields;
 import com.save.brbserver.dao.UserDao;
 import com.save.brbserver.entity.User;
 import com.save.brbserver.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Date;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.SQLException;
+import java.util.Map;
 
 /**
  * @Author:Zzs
@@ -24,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public boolean userLogin (String usernameOrEmail, String password) {
+	public boolean userLogin (String usernameOrEmail, String password) throws SQLException {
 		User user = userDao.getByUsername(usernameOrEmail);
 		String up = user.getPassword();
 		if (password.equals(up)) {
@@ -35,22 +37,30 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean userRegister (String username, String password, String email) {
+	@Transactional
+	public boolean userRegister (String username, String password, String email) throws SQLException {
 		return userDao.userRegister(username, password, email);
 	}
 	
 	@Override
-	public boolean postUserHeadSculpture (String username) {
-		String time = ConstantFields.dateToString(new Date());
-//		2023-05-01 17:20:16
-		
-		return false;
+	public boolean postUserHeadSculpture (String username, String path) throws SQLException {
+		return userDao.postUserHeadSculpture(username, path);
 	}
 	
 	@Override
 	public boolean changePassword (String username, String password) {
 		
 		return false;
+	}
+	
+	@Override
+	public Long getUserIdByName (String username) throws SQLException {
+		return userDao.getUserIdByName(username);
+	}
+	
+	@Override
+	public Map<String, Object> getSimpleUserInfo (String username) throws SQLException {
+		return userDao.getSimpleUserInfo(userDao.getUserIdByName(username));
 	}
 	
 }
