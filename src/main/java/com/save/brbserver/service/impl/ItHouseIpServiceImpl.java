@@ -6,6 +6,7 @@ import com.save.brbserver.service.ItHouseIpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -21,14 +22,15 @@ public class ItHouseIpServiceImpl implements ItHouseIpService {
 	private IpDao ipDao;
 	
 	@Override
-	public List<ItHouseIP> getIP () {
-		
-		return null;
+	public List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String prefecture) throws SQLException {
+		int typeId = ipDao.selectIpPrefecture(prefecture);
+		return ipDao.selectAllIPsOfCurrentPrefecture(typeId);
 	}
 	
 	@Override
-	public int getTypeId (String type) {
-		return ipDao.selectIpPrefecture(type); //获取ip的专区
+	public List<ItHouseIP> selectIPByName (String name) throws SQLException {
+		return ipDao.selectOneIPByName(name);
 	}
+	
 	
 }

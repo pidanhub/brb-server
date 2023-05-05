@@ -23,7 +23,7 @@ public class ActivitiesController {
 	@Autowired
 	private ActivitiesService activitiesService;
 	
-	@GetMapping ("/getsign")
+	@GetMapping ("/get-sign-in")
 	public ResponseEntity<?> getThoseActivitiesUserHadJoinedAndSignedIn (@RequestParam ("username") String username) {
 		try {
 			List<Activity> thoseActivitiesUserHadJoinedAndSignedIn = activitiesService.getThoseActivitiesUserHadJoinedAndSignedIn(username);
@@ -34,7 +34,7 @@ public class ActivitiesController {
 		}
 	}
 	
-	@GetMapping ("/getall")
+	@GetMapping ("/get-all")
 	public ResponseEntity<?> getALLActivitiesUserHadJoined (@RequestParam ("username") String username) {
 		try {
 			List<Activity> getALLActivitiesUserHadJoined = activitiesService.getALLActivitiesUserHadJoined(username);

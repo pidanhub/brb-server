@@ -2,6 +2,7 @@ package com.save.brbserver.service;
 
 import com.save.brbserver.entity.ItHouseIP;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -12,8 +13,8 @@ import java.util.List;
 
 public interface ItHouseIpService {
 	
-	List<ItHouseIP> getIP ();
+	List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String prefecture) throws SQLException;
 	
-	int getTypeId (String type);
+	List<ItHouseIP> selectIPByName (String name) throws SQLException;
 	
 }
