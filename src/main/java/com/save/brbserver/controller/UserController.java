@@ -45,10 +45,10 @@ public class UserController {
 		return true;
 	}
 	
-	@PostMapping (value = "/changepwd")
-	public boolean changePwd (@RequestParam ("username") String username, @RequestParam ("password") String password) {
+	@PostMapping (value = "/change-pwd")
+	public boolean changePwd (@RequestParam ("username") String username, @RequestParam ("oldPassword") String oldPassword, @RequestParam ("password") String newPassword) {
 		return true;
 	}
-
+	
 	
 }

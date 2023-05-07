@@ -4,7 +4,6 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.*;
 
 /**
  * @Author:Zzs
@@ -34,5 +33,7 @@ public class User implements Serializable {
 	private Timestamp registerTime;
 	private Timestamp lastLoginTime;
 	private boolean isLoggedIn;
+	
+	private Long integral;
 	
 }

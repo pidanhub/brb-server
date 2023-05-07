@@ -46,4 +46,7 @@ public interface UserDao {
 			"from users where user_id=#{userId};")
 	Map<String, Object> getSimpleUserInfo (@Param ("userId") Long userId) throws SQLException;
 	
+	@Update ("update users set integral = integral + 1 where user_id=#{userId}")
+	boolean addIntegral (@Param ("userId") Long userId) throws SQLException;
+	
 }

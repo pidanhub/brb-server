@@ -7,6 +7,7 @@ import com.save.brbserver.service.ActivitiesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -40,6 +41,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 	}
 	
 	@Override
+	@Transactional (rollbackFor = Exception.class)
 	public Long addActivity (String username, String name, String info, Timestamp startTime, String location) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
 		Activity activity = Activity.builder()
@@ -50,6 +52,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 				.startTime(startTime)
 				.build();
 		activityDao.addActivity(activity);
+		userDao.addIntegral(userId);
 		return activity.getActivId();
 	}
 }

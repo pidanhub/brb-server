@@ -17,6 +17,11 @@ mybatis:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+config:
+  jwt:
+    secret: abcdefg1234567
+    expire: 86400
+    header: token
 #logging:
 #  file:
 #    name:  E:/BRB/spring-test.log  # 日志文件绝对路径及名称

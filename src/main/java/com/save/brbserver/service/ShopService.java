@@ -4,6 +4,7 @@ import com.save.brbserver.entity.ItHouseIP;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author:Zzs
@@ -11,10 +12,12 @@ import java.util.List;
  * @DateTime: 2023/5/2 20:45
  **/
 
-public interface ItHouseIpService {
+public interface ShopService {
 	
 	List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String prefecture) throws SQLException;
 	
-	List<ItHouseIP> selectIPByName (String name) throws SQLException;
+	Set<ItHouseIP> selectIPByName (String name) throws SQLException;
+	
+	boolean favorite (String username, int id, int type) throws SQLException;
 	
 }

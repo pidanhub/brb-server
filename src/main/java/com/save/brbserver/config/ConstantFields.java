@@ -20,9 +20,12 @@ public class ConstantFields {
 		return "yyyy-MM-dd HH:mm:ss";
 	}
 	
-	public static String HEAD_PATH = "/head";
-	public static String IT_HOUSE_IP_PATH = "/ip";
-	public static String ACTIVITY_PATH = "/activity";
+	public static final String HEAD_PATH = "/head";
+	public static final String IT_HOUSE_IP_PATH = "/shop";
+	public static final String ACTIVITY_PATH = "/activity";
+	
+	public static final int FAVORITE_TYPE_ADD = 1;
+	public static final int FAVORITE_TYPE_DELETE = 3;
 	
 	public static String dateToString (Date date) {
 		String strDate = null;
@@ -38,4 +41,5 @@ public class ConstantFields {
 		HEAD,
 		ACTIVITY
 	}
+	
 }

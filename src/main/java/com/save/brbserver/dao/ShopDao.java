@@ -15,7 +15,7 @@ import java.util.List;
  **/
 
 @Mapper
-public interface IpDao {
+public interface ShopDao {
 	
 	@Select ("select id from ip_type where type = #{type}")
 	int selectIpPrefecture (@Param ("type") String type) throws SQLException;
@@ -23,7 +23,7 @@ public interface IpDao {
 	@Select ("select * from ips where ip_type=#{ipType}")
 	List<ItHouseIP> selectAllIPsOfCurrentPrefecture (@Param ("ipType") int type) throws SQLException;
 	
-	@Select ("select * from ips where name=#{name}")
+	@Select ("select * from ips where name REGEXP #{name}")
 	List<ItHouseIP> selectOneIPByName (@Param ("name") String name) throws SQLException;
 	
 }
