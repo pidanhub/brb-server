@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,14 +27,22 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public boolean userLogin (String usernameOrEmail, String password) throws SQLException {
+	public Map<String, String> userLogin (String usernameOrEmail, String password) throws SQLException {
 		User user = userDao.getByUsername(usernameOrEmail);
+		Map<String, String> map = new HashMap<>();
+		map.put("id", String.valueOf(user.getUserId()));
+		map.put("username", user.getUsername());
+		map.put("e-mail", user.getEmail());
+		map.put("introduction", user.getIntroduction());
+		map.put("head-sculpture-path", user.getHeadSculpturePath());
+		
 		String up = user.getPassword();
 		if (password.equals(up)) {
-			return userDao.userLoginUpdateTime(usernameOrEmail); //TODO encoder配置以后修改为探查密文
+			return map;
+			//TODO encoder配置以后修改为探查密文
 		}
 		else
-			return false;
+			return null;
 	}
 	
 	@Override

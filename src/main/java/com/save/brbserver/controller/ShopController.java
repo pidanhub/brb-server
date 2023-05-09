@@ -4,6 +4,7 @@ import com.save.brbserver.config.ConstantFields;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,9 +39,10 @@ public class ShopController {
 	}
 	
 	@PostMapping ("/search-ip")
-	public ResponseEntity<?> searchByName (@RequestParam ("name") String name) {
+	@Transactional (rollbackFor = Exception.class)
+	public ResponseEntity<?> searchByName (@RequestParam ("name") String goodName) {
 		try {
-			return new ResponseEntity<>(ResponseEntity.SUCCESS, shopService.selectIPByName(name), "获取成功");
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, shopService.selectIPByName(goodName), "获取成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(ResponseEntity.FAILED, null, "发生未知错误");

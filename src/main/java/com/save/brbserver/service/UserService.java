@@ -11,7 +11,7 @@ import java.util.Map;
 
 public interface UserService {
 	
-	boolean userLogin (String username, String password) throws SQLException;
+	Map<String, String> userLogin (String username, String password) throws SQLException;
 	
 	boolean userRegister (String username, String password, String email) throws SQLException;
 	

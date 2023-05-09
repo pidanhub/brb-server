@@ -1,5 +1,6 @@
 package com.save.brbserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,9 @@ import lombok.NoArgsConstructor;
 public class ResponseEntity<T> {
 	
 	private int code;
+	@JsonInclude (JsonInclude.Include.NON_EMPTY)
 	private T data;
+	@JsonInclude (JsonInclude.Include.NON_EMPTY)
 	private String message;
 	
 	public static final int SUCCESS = 200;

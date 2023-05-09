@@ -4,7 +4,10 @@ import com.save.brbserver.entity.Activity;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.service.ActivitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -23,10 +26,11 @@ public class ActivitiesController {
 	@Autowired
 	private ActivitiesService activitiesService;
 	
-	@GetMapping ("/get-sign-in")
+	@PostMapping ("/get-sign-in")
 	public ResponseEntity<?> getThoseActivitiesUserHadJoinedAndSignedIn (@RequestParam ("username") String username) {
 		try {
-			List<Activity> thoseActivitiesUserHadJoinedAndSignedIn = activitiesService.getThoseActivitiesUserHadJoinedAndSignedIn(username);
+			List<Activity> thoseActivitiesUserHadJoinedAndSignedIn =
+					activitiesService.getThoseActivitiesUserHadJoinedAndSignedIn(username);
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, thoseActivitiesUserHadJoinedAndSignedIn, "获取成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,10 +38,11 @@ public class ActivitiesController {
 		}
 	}
 	
-	@GetMapping ("/get-all")
+	@PostMapping ("/get-all")
 	public ResponseEntity<?> getALLActivitiesUserHadJoined (@RequestParam ("username") String username) {
 		try {
-			List<Activity> getALLActivitiesUserHadJoined = activitiesService.getALLActivitiesUserHadJoined(username);
+			List<Activity> getALLActivitiesUserHadJoined =
+					activitiesService.getALLActivitiesUserHadJoined(username);
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, getALLActivitiesUserHadJoined, "获取成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
