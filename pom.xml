@@ -19,6 +19,11 @@
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		
 		<!-- JWT依赖 -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>

@@ -41,7 +41,7 @@ public class JWTUtils {
      * @return 返回值为封装有两个token的实体类
      * @type 区分的规则是jwt中的type字段，可能用不到但是需要标识
      */
-    public static <T> TokenEntity getToken (Map<String, String> map) {
+    public static <T> TokenEntity getToken (Map<String, String> map) throws NullPointerException {
         Calendar instance1 = Calendar.getInstance();
         instance1.add(Calendar.DATE, 1);
         Calendar instance2 = Calendar.getInstance();
@@ -69,8 +69,8 @@ public class JWTUtils {
      *
      * @param token
      */
-    public static void verify (String token) {
-        log.info(token);
+    public static void verify (String token) throws NullPointerException {
+        
         JWT.require(Algorithm.HMAC256(secret)).build().verify(token);
     }
     

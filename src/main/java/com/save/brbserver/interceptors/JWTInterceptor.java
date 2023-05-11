@@ -4,6 +4,7 @@ import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.save.brbserver.customexception.MySecurityException;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.entity.TokenEntity;
 import com.save.brbserver.utils.JWTUtils;
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,62 +45,62 @@ public class JWTInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle (HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Map<String, Object> map = new HashMap<>();
-        //获取请求头里的token
         String token = request.getHeader("Authorization");
+        log.info(request.getRequestURI());
         try {
-            //验证令牌
+            if (request.getRequestURI().equals("/error"))
+                throw new Exception("bad method");
+            String username = request.getParameter("username");
             JWTUtils.verify(token);
-            try {
-                Claims claims = Jwts.parser()
-                        .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
-                        .parseClaimsJws(token).getBody();
-                
-                if (claims.get("type").equals("refresh")) {
-                    Map<String, String> tokenMap = fetchAndReturnNewMap(claims);
-//                log.info(map.toString());
-                    assert tokenMap != null;
-                    TokenEntity tokenEntity = JWTUtils.getToken(tokenMap);
-//                    log.info(tokenEntity.getToAuthentication());
-//                    log.info(tokenEntity.getToRefresh());
-                    response.setHeader("Authorization-to-request", tokenEntity.getToAuthentication());
-                    response.setHeader("Authorization-to-refresh", tokenEntity.getToRefresh());
-//                    log.info("success to set header");
-                }
-                else
-                    response.setHeader("Authorization", request.getHeader("Authorization"));
-            } catch (Exception e) {
-                e.printStackTrace();
-                ResponseEntity<?> responseEntity = new ResponseEntity<>(ResponseEntity.NEED_TOKEN, null, "token不合法！");
-                PrintWriter writer = response.getWriter();
-                writer.write(String.valueOf(responseEntity));
-                writer.flush();
-                return false;
+            Claims claims = Jwts.parser()
+                    .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
+                    .parseClaimsJws(token).getBody();
+            if (!claims.get("username").equals(username))
+                throw new MySecurityException("Dangerous Request!");
+        
+            if (claims.get("type").equals("refresh")) {
+                Map<String, String> tokenMap = fetchAndReturnNewMap(claims);
+                assert tokenMap != null;
+                TokenEntity tokenEntity = JWTUtils.getToken(tokenMap);
+                response.setHeader("Authorization-to-request", tokenEntity.getToAuthentication());
+                response.setHeader("Authorization-to-refresh", tokenEntity.getToRefresh());
             }
+            else
+                response.setHeader("Authorization", request.getHeader("Authorization"));
             return true;
+        } catch (MySecurityException e) {
+            e.printStackTrace();
+            map.put("code", ResponseEntity.DANGEROUS);
+            map.put("message", "不安全的请求");
         } catch (SignatureVerificationException e) {
             e.printStackTrace();
-            map.put("state", ResponseEntity.FAILED);
-            map.put("msg", "无效签名");
+            map.put("code", ResponseEntity.FAILED);
+            map.put("message", "无效签名");
         } catch (TokenExpiredException e) {
             // 过期异常,需要重新生成并返回给用户，在这里通知客户端需要发送用于刷新的token
             e.printStackTrace();
-            map.put("state", ResponseEntity.TOKEN_OUT_OF_TIME);
-            map.put("msg", "token过期");
+            map.put("code", ResponseEntity.TOKEN_OUT_OF_TIME);
+            map.put("message", "token过期");
         } catch (AlgorithmMismatchException e) {//算法不匹配
             e.printStackTrace();
-            map.put("state", ResponseEntity.FAILED);
-            map.put("msg", "token算法不一致");
-        } catch (Exception e) {
+            map.put("code", ResponseEntity.FAILED);
+            map.put("message", "token算法不一致");
+        } catch (NullPointerException e) {// 403 forbidden
             e.printStackTrace();
-            map.put("state", ResponseEntity.FAILED);
-            map.put("msg", "token无效");
+            map.put("code", ResponseEntity.NO_TOKEN);
+            map.put("message", "未携带token，不予处理");
+        } catch (Exception e) {
+            //TODO e.printStackTrace();
+            map.put("code", ResponseEntity.METHOD_NOT_ALLOW);
+            map.put("message", "方法不允许");
         }
+    
         String json = new ObjectMapper().writeValueAsString(map);
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().println(json);
         return false;
     }
-//
+
 //    @Override
 //    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws IOException {
 //

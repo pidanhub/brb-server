@@ -4,6 +4,7 @@ import com.save.brbserver.dao.UserDao;
 import com.save.brbserver.entity.User;
 import com.save.brbserver.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,28 +28,34 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
+	@Transactional (rollbackFor = Exception.class)
 	public Map<String, String> userLogin (String usernameOrEmail, String password) throws SQLException {
 		User user = userDao.getByUsername(usernameOrEmail);
+		if (user == null)
+			return null;
 		Map<String, String> map = new HashMap<>();
 		map.put("id", String.valueOf(user.getUserId()));
 		map.put("username", user.getUsername());
 		map.put("e-mail", user.getEmail());
 		map.put("introduction", user.getIntroduction());
 		map.put("head-sculpture-path", user.getHeadSculpturePath());
-		
+		userDao.userLoginUpdateTime(usernameOrEmail);
 		String up = user.getPassword();
-		if (password.equals(up)) {
+		String encodePassword = DigestUtils.md5Hex(password);
+		log.info(encodePassword);
+		if (encodePassword.equals(up)) {
 			return map;
-			//TODO encoder配置以后修改为探查密文
 		}
 		else
 			return null;
 	}
 	
 	@Override
-	@Transactional
+	@Transactional (rollbackFor = Exception.class)
 	public boolean userRegister (String username, String password, String email) throws SQLException {
-		return userDao.userRegister(username, password, email);
+		String encodePassword = DigestUtils.md5Hex(password);
+		log.info(encodePassword);
+		return userDao.userRegister(username, encodePassword, email);
 	}
 	
 	@Override
@@ -58,7 +65,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public boolean changePassword (String username, String password) {
-		
+		//TODO
 		return false;
 	}
 	
@@ -70,6 +77,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Map<String, Object> getSimpleUserInfo (String username) throws SQLException {
 		return userDao.getSimpleUserInfo(userDao.getUserIdByName(username));
+	}
+	
+	@Override
+	public boolean setInfo (String username, String info) throws SQLException {
+		Long id = getUserIdByName(username);
+		return userDao.setInfo(id, "“" + info + "”");
 	}
 	
 }

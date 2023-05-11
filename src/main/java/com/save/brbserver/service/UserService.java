@@ -22,4 +22,7 @@ public interface UserService {
 	Long getUserIdByName (String username) throws SQLException;
 	
 	Map<String, Object> getSimpleUserInfo (String username) throws SQLException;
+	
+	boolean setInfo (String username, String info) throws SQLException;
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,13 +26,15 @@ public class UserController {
 	private UserService userServiceImpl;
 	
 	@PostMapping (value = "/register")
-	public boolean userRegister (@RequestParam ("username") String username, @RequestParam ("password") String password, @RequestParam ("email") String email) {
-		
+	public ResponseEntity<?> userRegister (@RequestParam ("username") String username, @RequestParam ("password") String password, @RequestParam ("email") String email,
+	                                       @RequestParam ("verify-code") String verificationCode) {
 		try {
-			return userServiceImpl.userRegister(username, password, email);
-		} catch (SQLException e) {
+			if (!email.equals("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$"))
+				throw new Exception();
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, userServiceImpl.userRegister(username, password, email), "注册成功");
+		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "注册失败");
 		}
 	}
 	
@@ -43,12 +46,22 @@ public class UserController {
 		//与数据库的密文密码对比，同时访问登录状态，如果已经登录，请求拒绝
 		try {
 			Map<String, String> map = userServiceImpl.userLogin(usernameOrEmail, password);
+			if (map == null) {
+				return new ResponseEntity<>(ResponseEntity.FAILED, null, "用户名或密码错误");
+			}
 			TokenEntity token = JWTUtils.getToken(map);
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, token, "登陆成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return new ResponseEntity<>(ResponseEntity.FAILED, null, "登陆失败");
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误");
 		}
+	}
+	
+	@PostMapping (value = "/init")
+	public ResponseEntity<?> init () {
+		Map<String, Object> map = new HashMap<>();
+		//TODO
+		return new ResponseEntity<>(ResponseEntity.SUCCESS, map, "fdafbg");
 	}
 	
 	@GetMapping (value = "/logout")
@@ -61,5 +74,14 @@ public class UserController {
 		return true;
 	}
 	
+	@PostMapping (value = "/set-info")
+	public ResponseEntity<?> setInfo (@RequestParam ("username") String username, @RequestParam ("info") String info) {
+		try {
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, userServiceImpl.setInfo(username, info), "上传成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FAILED, false, "未知错误");
+		}
+	}
 	
 }

@@ -23,11 +23,11 @@ public interface UserDao {
 	 *                 关于登录应有两项操作，首先从该数据库中拿出用户的信息，然后更新用户的登录时间
 	 * @return
 	 */
-	@Select ("select * from users where username=#{username};")
+	@Select ("select * from users where username=#{username} or email=#{username};")
 	User getByUsername (@Param ("username") String username) throws SQLException;
 	
-	@Update ("update users set last_login_time=now(), is_logged_in=1 where username=#{username};")
-	boolean userLoginUpdateTime (@Param ("username") String username) throws SQLException;
+	@Update ("update users set last_login_time=now(), is_logged_in=1 where username=#{username} or email=#{username};")
+	void userLoginUpdateTime (@Param ("username") String username) throws SQLException;
 	
 	@Insert ("update users set head_sculpture_path=#{path} where username=#{username};")
 	boolean postUserHeadSculpture (@Param ("username") String username, @Param ("path") String path) throws SQLException;
@@ -39,7 +39,7 @@ public interface UserDao {
 	
 	boolean userLogout (@Param ("username") String username) throws SQLException;
 	
-	@Select ("select user_id from users where username = #{username};")
+	@Select ("select user_id from users where username = #{username} or email=#{username};")
 	Long getUserIdByName (@Param ("username") String username) throws SQLException;
 	
 	@Select ("select username,email,gender,introduction,address,head_sculpture_path,register_time,last_login_time,is_logged_in " +
@@ -48,5 +48,8 @@ public interface UserDao {
 	
 	@Update ("update users set integral = integral + 1 where user_id=#{userId}")
 	boolean addIntegral (@Param ("userId") Long userId) throws SQLException;
+	
+	@Update ("update users set introduction=#{info} where user_id=#{id};")
+	boolean setInfo (@Param ("id") Long id, @Param ("info") String info);
 	
 }
