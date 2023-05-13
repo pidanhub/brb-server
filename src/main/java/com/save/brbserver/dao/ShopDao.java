@@ -1,9 +1,7 @@
 package com.save.brbserver.dao;
 
 import com.save.brbserver.entity.ItHouseIP;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -25,5 +23,11 @@ public interface ShopDao {
 	
 	@Select ("select * from ips where name REGEXP #{name}")
 	List<ItHouseIP> selectOneIPByName (@Param ("name") String name) throws SQLException;
+	
+	@Insert ("insert into ip_user_favorite(user_id, ip_id) values(#{userId}, #{ipId});")
+	boolean addFavorite (@Param ("userId") Long user, @Param ("ipId") int ip);
+	
+	@Delete ("delete from ip_user_favorite where user_id=#{userId} and ip_id=#{ipId};")
+	boolean deleteFavorite (@Param ("userId") Long user, @Param ("ipId") int ip);
 	
 }

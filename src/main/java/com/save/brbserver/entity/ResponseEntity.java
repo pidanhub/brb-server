@@ -30,5 +30,6 @@ public class ResponseEntity<T> {
 	public static final int METHOD_NOT_ALLOW = 405;
 	public static final int FAILED = 500;
 	public static final int DANGEROUS = 100;
-	
+	public static final int FORMAT_NOT_RIGHT = 101;
+	public static final int UNIQUE_FIELD_ALREADY_EXIST = 102;
 }

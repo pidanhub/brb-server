@@ -1,6 +1,5 @@
 package com.save.brbserver.controller;
 
-import com.save.brbserver.config.ConstantFields;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +25,10 @@ public class ShopController {
 	private ShopService shopService;
 	
 	@PostMapping ("/get-ip")
-	public ResponseEntity<?> getIpInCurrentPrefecture (@RequestParam ("prefecture") String prefecture) {
+	@Transactional (rollbackFor = Exception.class)
+	public ResponseEntity<?> getIpInCurrentPrefecture (@RequestParam ("username") String username, @RequestParam ("prefecture") String prefecture) {
 		try {
-			prefecture = prefecture.replaceAll(" ", "");
+			prefecture = prefecture.replaceAll("[ ]", "");
 			return new ResponseEntity<>(ResponseEntity.SUCCESS,
 					shopService.selectAllIPsOfCurrentPrefecture(prefecture),
 					"成功");
@@ -40,7 +40,7 @@ public class ShopController {
 	
 	@PostMapping ("/search-ip")
 	@Transactional (rollbackFor = Exception.class)
-	public ResponseEntity<?> searchByName (@RequestParam ("name") String goodName) {
+	public ResponseEntity<?> searchByName (@RequestParam ("username") String username, @RequestParam ("name") String goodName) {
 		try {
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, shopService.selectIPByName(goodName), "获取成功");
 		} catch (SQLException e) {
@@ -50,13 +50,18 @@ public class ShopController {
 	}
 	
 	@PostMapping ("/add-delete-favorite")
-	public ResponseEntity<?> operationOnFavorite (@RequestParam ("username") String username, @RequestParam ("id") Long id, @RequestParam ("type") int type) {
-		switch (type) {
-			case ConstantFields.FAVORITE_TYPE_ADD:
-			
-			case ConstantFields.FAVORITE_TYPE_DELETE:
-				break;
+	@Transactional (rollbackFor = Exception.class)
+	public ResponseEntity<?> operationOnFavorite (@RequestParam ("username") String username,
+	                                              @RequestParam ("id") int id, @RequestParam ("type") int type) {
+		try {
+			boolean isOK = shopService.favorite(username, id, type);
+			if (isOK)
+				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "成功");
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return null;
+		// TODO 无论SQL异常或是id不对，都返回错误码
+		return new ResponseEntity<>(ResponseEntity.FAILED, null, "失败");
 	}
+	
 }

@@ -1,5 +1,6 @@
 package com.save.brbserver.controller;
 
+import com.save.brbserver.customexception.FormatException;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.entity.TokenEntity;
 import com.save.brbserver.service.UserService;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Map;
 
 /**
@@ -29,11 +30,20 @@ public class UserController {
 	public ResponseEntity<?> userRegister (@RequestParam ("username") String username, @RequestParam ("password") String password, @RequestParam ("email") String email,
 	                                       @RequestParam ("verify-code") String verificationCode) {
 		try {
-			if (!email.equals("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$"))
-				throw new Exception();
+			if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
+				throw new FormatException();
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, userServiceImpl.userRegister(username, password, email), "注册成功");
+		} catch (FormatException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FORMAT_NOT_RIGHT, null, "邮箱格式不正确");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误");
 		} catch (Exception e) {
 			e.printStackTrace();
+			Throwable cause = e.getCause();
+			if (cause instanceof SQLIntegrityConstraintViolationException)
+				return new ResponseEntity<>(ResponseEntity.UNIQUE_FIELD_ALREADY_EXIST, null, "用户名或邮箱已被占用");
 			return new ResponseEntity<>(ResponseEntity.FAILED, null, "注册失败");
 		}
 	}
@@ -58,10 +68,14 @@ public class UserController {
 	}
 	
 	@PostMapping (value = "/init")
-	public ResponseEntity<?> init () {
-		Map<String, Object> map = new HashMap<>();
-		//TODO
-		return new ResponseEntity<>(ResponseEntity.SUCCESS, map, "fdafbg");
+	public ResponseEntity<?> init (@RequestParam ("username") String username) {
+		try {
+			Map<String, Object> map = userServiceImpl.getSimpleUserInfo(username);
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, map, "成功");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误");
+		}
 	}
 	
 	@GetMapping (value = "/logout")

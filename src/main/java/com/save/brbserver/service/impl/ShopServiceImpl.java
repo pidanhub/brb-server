@@ -1,5 +1,6 @@
 package com.save.brbserver.service.impl;
 
+import com.save.brbserver.config.ConstantFields;
 import com.save.brbserver.dao.ShopDao;
 import com.save.brbserver.dao.UserDao;
 import com.save.brbserver.entity.ItHouseIP;
@@ -23,6 +24,7 @@ public class ShopServiceImpl implements ShopService {
 	
 	@Autowired
 	private ShopDao shopDao;
+	@Autowired
 	private UserDao userDao;
 	
 	@Override
@@ -45,9 +47,13 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public boolean favorite (String username, int id, int type) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
-		
+		switch (type) {
+			case ConstantFields.FAVORITE_TYPE_ADD:
+				return shopDao.addFavorite(userId, id);
+			case ConstantFields.FAVORITE_TYPE_DELETE:
+				return shopDao.deleteFavorite(userId, id);
+		}
 		return false;
 	}
-	
 	
 }

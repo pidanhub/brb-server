@@ -21,7 +21,6 @@ public interface UserDao {
 	/**
 	 * @param username 中的字符串与select语句中大括号内的字符串等同
 	 *                 关于登录应有两项操作，首先从该数据库中拿出用户的信息，然后更新用户的登录时间
-	 * @return
 	 */
 	@Select ("select * from users where username=#{username} or email=#{username};")
 	User getByUsername (@Param ("username") String username) throws SQLException;
@@ -42,7 +41,7 @@ public interface UserDao {
 	@Select ("select user_id from users where username = #{username} or email=#{username};")
 	Long getUserIdByName (@Param ("username") String username) throws SQLException;
 	
-	@Select ("select username,email,gender,introduction,address,head_sculpture_path,register_time,last_login_time,is_logged_in " +
+	@Select ("select username,email,gender,introduction,address,head_sculpture_path " +
 			"from users where user_id=#{userId};")
 	Map<String, Object> getSimpleUserInfo (@Param ("userId") Long userId) throws SQLException;
 	
@@ -50,6 +49,6 @@ public interface UserDao {
 	boolean addIntegral (@Param ("userId") Long userId) throws SQLException;
 	
 	@Update ("update users set introduction=#{info} where user_id=#{id};")
-	boolean setInfo (@Param ("id") Long id, @Param ("info") String info);
+	boolean setInfo (@Param ("id") Long id, @Param ("info") String info) throws SQLException;
 	
 }
