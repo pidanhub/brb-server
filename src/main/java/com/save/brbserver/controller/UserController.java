@@ -30,8 +30,6 @@ public class UserController {
 	public ResponseEntity<?> userRegister (@RequestParam ("username") String username, @RequestParam ("password") String password, @RequestParam ("email") String email,
 	                                       @RequestParam ("verify-code") String verificationCode) {
 		try {
-			if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
-				throw new FormatException();
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, userServiceImpl.userRegister(username, password, email), "注册成功");
 		} catch (FormatException e) {
 			e.printStackTrace();

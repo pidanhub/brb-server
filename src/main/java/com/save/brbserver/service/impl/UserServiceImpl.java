@@ -1,5 +1,6 @@
 package com.save.brbserver.service.impl;
 
+import com.save.brbserver.customexception.FormatException;
 import com.save.brbserver.dao.UserDao;
 import com.save.brbserver.entity.User;
 import com.save.brbserver.service.UserService;
@@ -52,7 +53,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional (rollbackFor = Exception.class)
-	public boolean userRegister (String username, String password, String email) throws SQLException {
+	public boolean userRegister (String username, String password, String email) throws SQLException, FormatException {
+		if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
+			throw new FormatException();
 		String encodePassword = DigestUtils.md5Hex(password);
 		log.info(encodePassword);
 		return userDao.userRegister(username, encodePassword, email);

@@ -10,6 +10,11 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  mvc:
+    static-path-pattern: /images/**
+  web:
+    resources:
+      static-locations: file:/images
 
 mybatis:
   type-aliases-package: com.save.brbserver.entity
@@ -20,11 +25,11 @@ mybatis:
 jwt:
   secret: kjFBjnlndnlanlf
 
-#logging:
-#  file:
-#    name:  E:/BRB/spring-test.log  # 日志文件绝对路径及名称
-#  level:
-#    root: info #日志级别 root表示所有包，也可以单独配置具体包 fatal>error>warn>info>debug>trace>off
+logging:
+  file:
+    name: ./logspring-brb.log
+  level:
+    root: info #日志级别 root表示所有包，也可以单独配置具体包 fatal>error>warn>info>debug>trace>off
 
 #swagger:
 #  enabled: true

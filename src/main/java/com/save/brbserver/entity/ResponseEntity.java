@@ -32,4 +32,5 @@ public class ResponseEntity<T> {
 	public static final int DANGEROUS = 100;
 	public static final int FORMAT_NOT_RIGHT = 101;
 	public static final int UNIQUE_FIELD_ALREADY_EXIST = 102;
+	public static final int WRONG_NUMBERINGS = 103;
 }

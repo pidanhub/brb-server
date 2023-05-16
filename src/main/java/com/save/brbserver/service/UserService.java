@@ -1,5 +1,7 @@
 package com.save.brbserver.service;
 
+import com.save.brbserver.customexception.FormatException;
+
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -13,7 +15,7 @@ public interface UserService {
 	
 	Map<String, String> userLogin (String username, String password) throws SQLException;
 	
-	boolean userRegister (String username, String password, String email) throws SQLException;
+	boolean userRegister (String username, String password, String email) throws SQLException, FormatException;
 	
 	boolean postUserHeadSculpture (String username, String path) throws SQLException;
 	

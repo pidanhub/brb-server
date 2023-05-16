@@ -23,6 +23,7 @@ public class ConstantFields {
 	public static final String HEAD_PATH = "/head";
 	public static final String IT_HOUSE_IP_PATH = "/shop";
 	public static final String ACTIVITY_PATH = "/activity";
+	public static final String MOMENTS_PATH = "/moments";
 	
 	public static final int FAVORITE_TYPE_ADD = 1;
 	public static final int FAVORITE_TYPE_DELETE = 3;
