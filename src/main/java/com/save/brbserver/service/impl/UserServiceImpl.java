@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 		if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
 			throw new FormatException();
 		String encodePassword = DigestUtils.md5Hex(password);
-		log.info(encodePassword);
+		//log.info(encodePassword);
 		return userDao.userRegister(username, encodePassword, email);
 	}
 	

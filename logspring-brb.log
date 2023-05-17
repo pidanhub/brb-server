@@ -1,11 +1,166 @@
-2023-05-16 19:50:12.341  INFO 87296 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 87296 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
-2023-05-16 19:50:12.345  INFO 87296 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
-2023-05-16 19:50:13.019  INFO 87296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-16 19:50:13.022  INFO 87296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-05-16 19:50:13.054  INFO 87296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
-2023-05-16 19:50:13.315  INFO 87296 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$2821bfd3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-05-16 19:50:13.372  INFO 87296 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2023-05-16 19:50:14.181  INFO 87296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
-2023-05-16 19:50:14.331  INFO 87296 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1929 ms
-2023-05-16 19:50:15.330  INFO 87296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
-2023-05-16 19:50:15.341  INFO 87296 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 3.662 seconds (JVM running for 4.362)
+2023-05-17 19:05:23.800  INFO 40896 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 40896 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-05-17 19:05:23.812  INFO 40896 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-05-17 19:05:24.701  INFO 40896 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-17 19:05:24.704  INFO 40896 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-17 19:05:24.736  INFO 40896 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2023-05-17 19:05:25.088  INFO 40896 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$911bb2e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-17 19:05:25.165  INFO 40896 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-05-17 19:05:26.287  INFO 40896 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-05-17 19:05:26.300  INFO 40896 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-17 19:05:26.300  INFO 40896 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-17 19:05:26.429  INFO 40896 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-17 19:05:26.429  INFO 40896 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2519 ms
+2023-05-17 19:05:27.735  INFO 40896 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-05-17 19:05:27.746  INFO 40896 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 4.561 seconds (JVM running for 5.196)
+2023-05-17 19:06:28.027  INFO 25460 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 25460 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-05-17 19:06:28.033  INFO 25460 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-05-17 19:06:28.851  INFO 25460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-17 19:06:28.858  INFO 25460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-17 19:06:28.898  INFO 25460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+2023-05-17 19:06:29.277  INFO 25460 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$cc7dad97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-17 19:06:29.338  INFO 25460 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-05-17 19:06:31.685  INFO 25460 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-05-17 19:06:31.697  INFO 25460 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-17 19:06:31.698  INFO 25460 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-17 19:06:31.829  INFO 25460 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-17 19:06:31.829  INFO 25460 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3724 ms
+2023-05-17 19:06:33.036  INFO 25460 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-05-17 19:06:33.048  INFO 25460 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 5.512 seconds (JVM running for 6.061)
+2023-05-17 19:07:03.503  INFO 25460 --- [http-nio-18950-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-17 19:07:03.503  INFO 25460 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-17 19:07:03.504  INFO 25460 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-05-17 19:07:03.562  INFO 25460 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-17 19:07:04.134  INFO 25460 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-17 19:07:04.261  INFO 25460 --- [http-nio-18950-exec-2] c.s.b.service.impl.UserServiceImpl       : e10adc3949ba59abbe56e057f20f883e
+2023-05-17 19:07:34.640  INFO 25460 --- [http-nio-18950-exec-7] c.s.b.interceptors.JWTInterceptor        : /moment/post
+2023-05-17 19:07:34.850 ERROR 25460 --- [http-nio-18950-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'post_path' in 'field list'
+### The error may exist in com/save/brbserver/dao/MomentsDao.java (best guess)
+### The error may involve com.save.brbserver.dao.MomentsDao.postMoment-Inline
+### The error occurred while setting parameters
+### SQL: insert into moments(user_id, content, post_path) values(?, ?, now());
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'post_path' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'post_path' in 'field list'] with root cause
+
+java.sql.SQLSyntaxErrorException: Unknown column 'post_path' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-4.0.3.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59) ~[mybatis-3.5.2.jar:3.5.2]
+	at com.sun.proxy.$Proxy91.execute(Unknown Source) ~[na:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184) ~[mybatis-3.5.2.jar:3.5.2]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426) ~[mybatis-spring-2.0.2.jar:2.0.2]
+	at com.sun.proxy.$Proxy63.insert(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271) ~[mybatis-spring-2.0.2.jar:2.0.2]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:57) ~[mybatis-3.5.2.jar:3.5.2]
+	at com.sun.proxy.$Proxy71.postMoment(Unknown Source) ~[na:na]
+	at com.save.brbserver.service.impl.MomentsServiceImpl.postMoments(MomentsServiceImpl.java:54) ~[classes/:na]
+	at com.save.brbserver.service.impl.MomentsServiceImpl$$FastClassBySpringCGLIB$$133b373a.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at com.save.brbserver.service.impl.MomentsServiceImpl$$EnhancerBySpringCGLIB$$88afcaeb.postMoments(<generated>) ~[classes/:na]
+	at com.save.brbserver.controller.MomentsController.postMoments(MomentsController.java:29) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555) ~[tomcat-embed-core-9.0.74.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.74.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.28-20230425.173928-5.jar:5.3.28-SNAPSHOT]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2023-05-17 19:07:34.853  INFO 25460 --- [http-nio-18950-exec-7] c.s.b.interceptors.JWTInterceptor        : /error
+2023-05-17 19:10:28.947  INFO 25460 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-17 19:10:28.959  INFO 25460 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-17 19:10:33.028  INFO 71400 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 71400 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-05-17 19:10:33.032  INFO 71400 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-05-17 19:10:34.054  INFO 71400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-17 19:10:34.057  INFO 71400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-17 19:10:34.087  INFO 71400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2023-05-17 19:10:34.366  INFO 71400 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$2821bfd3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-17 19:10:34.399  INFO 71400 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-05-17 19:10:35.201  INFO 71400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-05-17 19:10:35.209  INFO 71400 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-17 19:10:35.209  INFO 71400 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-17 19:10:35.321  INFO 71400 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-17 19:10:35.321  INFO 71400 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2201 ms
+2023-05-17 19:10:36.480  INFO 71400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-05-17 19:10:36.492  INFO 71400 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 3.994 seconds (JVM running for 4.505)
+2023-05-17 19:10:40.623  INFO 71400 --- [http-nio-18950-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-17 19:10:40.624  INFO 71400 --- [http-nio-18950-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-17 19:10:40.625  INFO 71400 --- [http-nio-18950-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-05-17 19:10:40.659  INFO 71400 --- [http-nio-18950-exec-1] c.s.b.interceptors.JWTInterceptor        : /moment/post
+2023-05-17 19:10:40.765  INFO 71400 --- [http-nio-18950-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-17 19:10:41.332  INFO 71400 --- [http-nio-18950-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-17 19:10:50.992  INFO 71400 --- [http-nio-18950-exec-3] c.s.b.interceptors.JWTInterceptor        : /moment/post
+2023-05-17 19:13:50.346  INFO 71400 --- [http-nio-18950-exec-6] c.s.b.interceptors.JWTInterceptor        : /moment/post
+2023-05-17 19:32:21.795  INFO 71400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-17 19:32:21.804  INFO 71400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

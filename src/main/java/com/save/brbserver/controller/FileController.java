@@ -28,6 +28,7 @@ import java.util.UUID;
  **/
 
 @RestController
+@SuppressWarnings ("all")
 @RequestMapping ("/file")
 public class FileController {
 	
@@ -90,8 +91,10 @@ public class FileController {
 			IOUtils.copy(in, out);
 			out.close();
 			in.close();
-			momentsService.setImages(id1, id2, s + newFileName);
-			return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "上传成功");
+			if (momentsService.setImages(id1, id2, s + newFileName))
+				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "上传成功");
+			else
+				return new ResponseEntity<>(ResponseEntity.FAILED, null, "上传失败");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误");

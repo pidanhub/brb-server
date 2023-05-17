@@ -1,5 +1,6 @@
 package com.save.brbserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -17,13 +18,18 @@ import java.util.Set;
 @Builder
 @Getter
 @Setter
-class Moments {
+@JsonInclude (JsonInclude.Include.NON_EMPTY)
+public class Moments {
 	
 	private Long id;
 	private Long userId;
-	private String username;
 	private String content;
 	private Timestamp postTime;
-	private Set<String> pictures;
 	private String coverPath;
+	private Long like;
+	
+	private String username;
+	private String userHeadPath;
+	private Set<String> pictures;
+	
 }
