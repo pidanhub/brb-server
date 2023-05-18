@@ -3,7 +3,7 @@ package com.save.brbserver.dao;
 import com.save.brbserver.entity.Activity;
 import org.apache.ibatis.annotations.*;
 
-import java.sql.Timestamp;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -24,8 +24,8 @@ public interface ActivityDao {
 	
 	boolean getAllActivities ();
 	
-	
-	boolean oneSignINActivity (String username, String aName, Timestamp startTime, String location);
+	@Insert ("insert into user_activs (#{u}, #{a}, 0);")
+	void oneSignINActivity (@Param ("u") Long uId, @Param ("a") Long aId) throws SQLException;
 	
 	@Select ("select * from activities where activ_id in (select a_id from user_activs where u_id=#{userId});")
 	List<Activity> getALLActivitiesUserHadJoined (@Param ("userId") Long userId);

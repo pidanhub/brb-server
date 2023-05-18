@@ -18,10 +18,10 @@ import java.util.Set;
 @Builder
 @Getter
 @Setter
-@JsonInclude (JsonInclude.Include.NON_NULL)
 public class Moments {
 	
 	private Long id; //1
+	@JsonInclude (JsonInclude.Include.NON_NULL)
 	private Long userId;
 	private String content; //1
 	private Timestamp postTime; //1
@@ -29,8 +29,9 @@ public class Moments {
 	private Long like; //1
 	private boolean isLiked; //1
 	
-	private String username; //1
+	private String nickname; //1
 	private String userHeadPath; //1
+	@JsonInclude (JsonInclude.Include.NON_NULL)
 	private Set<String> pictures;
 	
 }

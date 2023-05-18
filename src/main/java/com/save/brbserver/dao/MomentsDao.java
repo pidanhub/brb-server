@@ -30,7 +30,7 @@ public interface MomentsDao {
 	boolean setCover (@Param ("id") Long id, @Param ("path") String path) throws SQLException;
 	
 	//按时间先后排序，返回后发布的20个
-	@Select ("select id, content, post_time, cover_path, `like`, username, head_sculpture_path as user_head_path " +
+	@Select ("select id, content, post_time, cover_path, `like`, nickname, head_sculpture_path as user_head_path " +
 			"from moments, users " +
 			"where moments.user_id = users.user_id " +
 			"order by post_time desc " +

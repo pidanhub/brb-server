@@ -31,9 +31,9 @@ public interface UserDao {
 	@Insert ("update users set head_sculpture_path=#{path} where username=#{username};")
 	boolean postUserHeadSculpture (@Param ("username") String username, @Param ("path") String path) throws SQLException;
 	
-	@Insert ("insert into users(username, email, password, register_time, last_login_time) " +
-			"values(#{username}, #{email}, #{password}, now(), now());")
-	boolean userRegister (@Param ("username") String username, @Param ("password") String password, @Param ("email") String email) throws SQLException;
+	@Insert ("insert into users(username, email, password, nickname, register_time, last_login_time) " +
+			"values(#{username}, #{email}, #{password}, #{nickname}, now(), now());")
+	boolean userRegister (@Param ("username") String username, @Param ("nickname") String nickname, @Param ("password") String password, @Param ("email") String email) throws SQLException;
 	
 	
 	boolean userLogout (@Param ("username") String username) throws SQLException;
@@ -41,7 +41,7 @@ public interface UserDao {
 	@Select ("select user_id from users where username = #{username} or email=#{username};")
 	Long getUserIdByName (@Param ("username") String username) throws SQLException;
 	
-	@Select ("select username,email,gender,introduction,address,head_sculpture_path " +
+	@Select ("select username,email,nickname,gender,introduction,address,head_sculpture_path " +
 			"from users where user_id=#{userId};")
 	Map<String, Object> getSimpleUserInfo (@Param ("userId") Long userId) throws SQLException;
 	
@@ -50,5 +50,8 @@ public interface UserDao {
 	
 	@Update ("update users set introduction=#{info} where user_id=#{id};")
 	boolean setInfo (@Param ("id") Long id, @Param ("info") String info) throws SQLException;
+	
+	@Update ("update users set nickname=#{nickname} where user_id=#{id};")
+	boolean setNickname (@Param ("id") Long id, @Param ("nickname") String newNickname) throws SQLException;
 	
 }

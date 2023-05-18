@@ -13,6 +13,7 @@ import java.sql.Timestamp;
  * @DateTime: 2023/4/30 15:12
  **/
 
+@SuppressWarnings ("SpellCheckingInspection")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

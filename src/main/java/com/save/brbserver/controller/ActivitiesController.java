@@ -38,7 +38,7 @@ public class ActivitiesController {
 		}
 	}
 	
-	@PostMapping ("/get-all")
+	@PostMapping ("/get-joined")
 	public ResponseEntity<?> getALLActivitiesUserHadJoined (@RequestParam ("username") String username) {
 		try {
 			List<Activity> getALLActivitiesUserHadJoined =
@@ -54,6 +54,7 @@ public class ActivitiesController {
 	public ResponseEntity<?> addActivity (@RequestParam ("username") String username, @RequestParam ("name") String name, @RequestParam ("info") String info,
 	                                      @RequestParam ("starttime") String startTime, @RequestParam ("location") String location) {
 		try {
+			//同时主人也会参加活动
 			Long id = activitiesService.addActivity(username, name, info, Timestamp.valueOf(startTime), location);
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, id, "成功创建活动");
 		} catch (SQLException e) {

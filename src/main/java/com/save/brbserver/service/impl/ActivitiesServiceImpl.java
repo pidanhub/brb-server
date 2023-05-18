@@ -52,6 +52,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 				.startTime(startTime)
 				.build();
 		activityDao.addActivity(activity);
+		activityDao.oneSignINActivity(userId, activity.getActivId()); //同时参加
 		userDao.addIntegral(userId);
 		return activity.getActivId();
 	}

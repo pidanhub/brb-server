@@ -15,7 +15,7 @@ public interface UserService {
 	
 	Map<String, String> userLogin (String username, String password) throws SQLException;
 	
-	boolean userRegister (String username, String password, String email) throws SQLException, FormatException;
+	boolean userRegister (String username, String nickname, String password, String email) throws SQLException, FormatException;
 	
 	boolean postUserHeadSculpture (String username, String path) throws SQLException;
 	
@@ -27,4 +27,5 @@ public interface UserService {
 	
 	boolean setInfo (String username, String info) throws SQLException;
 	
+	boolean setNickname (String username, String newNickname) throws SQLException;
 }

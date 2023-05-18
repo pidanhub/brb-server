@@ -40,7 +40,6 @@ public class MomentsController {
 		}
 	}
 	
-	// TODO 以下三个要设计参数
 	@PostMapping ("/detail")
 	public ResponseEntity<?> momentDetails (@RequestParam ("username") String username, @RequestParam ("id") Long id) {
 		try {

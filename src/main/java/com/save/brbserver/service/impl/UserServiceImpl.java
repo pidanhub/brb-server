@@ -53,12 +53,11 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional (rollbackFor = Exception.class)
-	public boolean userRegister (String username, String password, String email) throws SQLException, FormatException {
+	public boolean userRegister (String username, String nickname, String password, String email) throws SQLException, FormatException {
 		if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
 			throw new FormatException();
 		String encodePassword = DigestUtils.md5Hex(password);
-		//log.info(encodePassword);
-		return userDao.userRegister(username, encodePassword, email);
+		return userDao.userRegister(username, nickname, encodePassword, email);
 	}
 	
 	@Override
@@ -86,6 +85,11 @@ public class UserServiceImpl implements UserService {
 	public boolean setInfo (String username, String info) throws SQLException {
 		Long id = getUserIdByName(username);
 		return userDao.setInfo(id, "“" + info + "”");
+	}
+	
+	@Override
+	public boolean setNickname (String username, String newNickname) throws SQLException {
+		return userDao.setNickname(userDao.getUserIdByName(username), newNickname);
 	}
 	
 }
