@@ -1,5 +1,7 @@
 package com.save.brbserver.service;
 
+import com.save.brbserver.customexception.MySecurityException;
+import com.save.brbserver.entity.Moments;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -21,5 +23,13 @@ public interface MomentsService {
 	
 	Long postMoments (String username, String text) throws SQLException;
 	
-	List<Map<?, ?>> getAllMoments ();
+	List<Moments> getAllMoments (String username, int page) throws SQLException;
+	
+	boolean deleteMoment (String username, Long id) throws SQLException, MySecurityException;
+	
+	boolean like (String username, Long id) throws SQLException;
+	
+	boolean dislike (String username, Long id) throws SQLException;
+	
+	Map<Integer, String> details (Long id) throws SQLException;
 }

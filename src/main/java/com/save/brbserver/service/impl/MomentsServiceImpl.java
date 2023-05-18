@@ -1,5 +1,6 @@
 package com.save.brbserver.service.impl;
 
+import com.save.brbserver.customexception.MySecurityException;
 import com.save.brbserver.dao.MomentsDao;
 import com.save.brbserver.dao.UserDao;
 import com.save.brbserver.entity.Moments;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author:Zzs
@@ -44,12 +46,13 @@ public class MomentsServiceImpl implements MomentsService {
 	}
 	
 	@Override
-	@Transactional (rollbackFor = Exception.class)
+	@Transactional (rollbackFor = Exception.class) //done
 	public Long postMoments (String username, String text) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
 		Moments moments = Moments.builder()
 				.userId(userId)
 				.content(text)
+				.isLiked(false)
 				.build();
 		momentsDao.postMoment(moments); //将圈子存入
 		userDao.addIntegral(userId); //为发布者加积分
@@ -57,11 +60,48 @@ public class MomentsServiceImpl implements MomentsService {
 	}
 	
 	@Override
-	@Transactional (rollbackFor = Exception.class)
-	public List<Map<?, ?>> getAllMoments () {
+	public List<Moments> getAllMoments (String username, int page) throws SQLException {
 		//目前的获取方法中，只有一张封面图，另获取发布者名字和发布者头像路径
+		int limit = 10;
+		Long min = (long) limit * page;
+		List<Moments> list = momentsDao.getMomentsList(limit, min);
+		if (list.size() != 0) {
+			Set<Long> set = momentsDao.findLikesBetweenRange(userDao.getUserIdByName(username),
+					list.get(list.size() - 1).getId(), list.get(0).getId());
+			log.info(set.toString());
+			if (set.size() != 0)
+				for (Moments m : list)
+					if (set.contains(m.getId()))
+						m.setLiked(true);
+		}
 		
-		return null;
+		return list;
+	}
+	
+	@Override
+	@Transactional (rollbackFor = Exception.class) //done
+	public boolean deleteMoment (String username, Long id) throws SQLException, MySecurityException {
+		Long userId = userDao.getUserIdByName(username);
+		if (!userId.equals(momentsDao.getMomentUserId(id)))
+			throw new MySecurityException();
+		return momentsDao.deleteImages(id) || momentsDao.deleteMoments(id);
+	}
+	
+	@Override
+	@Transactional (rollbackFor = Exception.class)
+	public boolean like (String username, Long id) throws SQLException {
+		return momentsDao.like(userDao.getUserIdByName(username), id) && momentsDao.likeCount(id);
+	}
+	
+	@Override
+	@Transactional (rollbackFor = Exception.class)
+	public boolean dislike (String username, Long id) throws SQLException {
+		return momentsDao.dislike(userDao.getUserIdByName(username), id) && momentsDao.dislikeCount(id);
+	}
+	
+	@Override
+	public Map<Integer, String> details (Long id) throws SQLException {
+		return momentsDao.getDetails(id);
 	}
 	
 }

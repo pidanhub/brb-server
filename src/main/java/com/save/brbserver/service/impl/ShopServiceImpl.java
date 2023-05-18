@@ -7,6 +7,7 @@ import com.save.brbserver.entity.ItHouseIP;
 import com.save.brbserver.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -27,6 +28,7 @@ public class ShopServiceImpl implements ShopService {
 	@Autowired
 	private UserDao userDao;
 	
+	//TODO 标识ip中已经收藏的部分
 	@Override
 	public List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String prefecture) throws SQLException {
 		int typeId = shopDao.selectIpPrefecture(prefecture);
@@ -45,6 +47,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	@Override
+	@Transactional (rollbackFor = Exception.class)
 	public boolean favorite (String username, int id, int type) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
 		switch (type) {

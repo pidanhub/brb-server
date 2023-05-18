@@ -4,6 +4,9 @@ import com.save.brbserver.entity.Moments;
 import org.apache.ibatis.annotations.*;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author:Zzs
@@ -26,8 +29,39 @@ public interface MomentsDao {
 	@Update ("update moments set cover_path=#{path} where id=#{id};")
 	boolean setCover (@Param ("id") Long id, @Param ("path") String path) throws SQLException;
 	
-	//
-	@Select ("")
-	Moments selectMoments () throws SQLException;
+	//按时间先后排序，返回后发布的20个
+	@Select ("select id, content, post_time, cover_path, `like`, username, head_sculpture_path as user_head_path " +
+			"from moments, users " +
+			"where moments.user_id = users.user_id " +
+			"order by post_time desc " +
+			"limit #{limit} offset #{offset};")
+	List<Moments> getMomentsList (@Param ("limit") int limit, @Param ("offset") Long offset) throws SQLException;
+	
+	@Select ("select photo_num, storage_path from moments_images where moment_id = #{id};")
+	Map<Integer, String> getDetails (@Param ("id") Long id) throws SQLException;
+	
+	@Select ("select user_id from moments where id=#{id};")
+	Long getMomentUserId (@Param ("id") Long id) throws SQLException;
+	
+	@Delete ("delete from moments where id=#{id};")
+	boolean deleteMoments (@Param ("id") Long id) throws SQLException;
+	
+	@Delete ("delete from moments_images where moment_id=#{id};")
+	boolean deleteImages (@Param ("id") Long id) throws SQLException;
+	
+	@Insert ("insert into user_like_moment values(#{u}, #{m});")
+	boolean like (@Param ("u") Long userId, @Param ("m") Long momentId) throws SQLException;
+	
+	@Update ("update moments set `like` = `like` + 1 where id = #{m};")
+	boolean likeCount (@Param ("m") Long id) throws SQLException;
+	
+	@Select ("select moment_id from user_like_moment where user_id=#{userId} and moment_id>=#{min} and moment_id<=#{max};")
+	Set<Long> findLikesBetweenRange (@Param ("userId") Long userId, @Param ("min") Long min, @Param ("max") Long max) throws SQLException;
+	
+	@Delete ("delete from user_like_moment where user_id=#{u} and moment_id=#{m};")
+	boolean dislike (@Param ("u") Long userId, @Param ("m") Long id) throws SQLException;
+	
+	@Update ("update moments set `like` = `like` - 1 where id = #{m};")
+	boolean dislikeCount (@Param ("m") Long id) throws SQLException;
 	
 }

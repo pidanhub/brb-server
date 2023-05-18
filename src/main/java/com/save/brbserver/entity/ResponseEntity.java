@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class ResponseEntity<T> {
 	
 	private int code;
-	@JsonInclude (JsonInclude.Include.NON_EMPTY)
+	@JsonInclude (JsonInclude.Include.NON_NULL)
 	private T data;
 	@JsonInclude (JsonInclude.Include.NON_EMPTY)
 	private String message;
@@ -33,4 +33,6 @@ public class ResponseEntity<T> {
 	public static final int FORMAT_NOT_RIGHT = 101;
 	public static final int UNIQUE_FIELD_ALREADY_EXIST = 102;
 	public static final int WRONG_NUMBERINGS = 103;
+	public static final int NETWORK_UNREACHABLE = 1000;
+	
 }

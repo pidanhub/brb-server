@@ -19,6 +19,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,20 +80,24 @@ public class JWTInterceptor implements HandlerInterceptor {
         } catch (TokenExpiredException e) {
             // 过期异常,需要重新生成并返回给用户，在这里通知客户端需要发送用于刷新的token
             e.printStackTrace();
-            map.put("code", ResponseEntity.TOKEN_OUT_OF_TIME);
-            map.put("message", "token过期");
+	        map.put("code", ResponseEntity.TOKEN_OUT_OF_TIME);
+	        map.put("message", "token过期");
         } catch (AlgorithmMismatchException e) {//算法不匹配
-            e.printStackTrace();
-            map.put("code", ResponseEntity.FAILED);
-            map.put("message", "token算法不一致");
+	        e.printStackTrace();
+	        map.put("code", ResponseEntity.FAILED);
+	        map.put("message", "token算法不一致");
         } catch (NullPointerException e) {// 403 forbidden
-            e.printStackTrace();
-            map.put("code", ResponseEntity.NO_TOKEN);
-            map.put("message", "未携带token，不予处理");
+	        e.printStackTrace();
+	        map.put("code", ResponseEntity.NO_TOKEN);
+	        map.put("message", "未携带token，不予处理");
+        } catch (SocketException e) {
+	        e.printStackTrace();
+	        map.put("code", ResponseEntity.NETWORK_UNREACHABLE);
+	        map.put("message", "目标网络不可达（本地测试）");
         } catch (Exception e) {
-            //TODO e.printStackTrace();
-            map.put("code", ResponseEntity.METHOD_NOT_ALLOW);
-            map.put("message", "方法不允许");
+	        //TODO e.printStackTrace();
+	        map.put("code", ResponseEntity.METHOD_NOT_ALLOW);
+	        map.put("message", "方法不允许");
         }
     
         String json = new ObjectMapper().writeValueAsString(map);
