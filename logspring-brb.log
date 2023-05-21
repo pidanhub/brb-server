@@ -438,3 +438,34 @@ Offending resource: class path resource [com/save/brbserver/config/JWTIntercepto
 2023-05-21 15:20:28.723  INFO 60892 --- [http-nio-18950-exec-1] c.s.b.interceptors.JWTInterceptor        : /user/logout
 2023-05-21 15:22:21.723  INFO 60892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-05-21 15:22:21.731  INFO 60892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-21 15:22:26.733  INFO 95940 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 95940 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-05-21 15:22:26.738  INFO 95940 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-05-21 15:22:27.442  INFO 95940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-21 15:22:27.444  INFO 95940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-21 15:22:27.476  INFO 95940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2023-05-21 15:22:27.799  INFO 95940 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7c7cce94] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-21 15:22:27.866  INFO 95940 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-05-21 15:22:31.128  INFO 95940 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-05-21 15:22:31.138  INFO 95940 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-21 15:22:31.139  INFO 95940 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-21 15:22:31.252  INFO 95940 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-21 15:22:31.253  INFO 95940 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4455 ms
+2023-05-21 15:22:32.515  INFO 95940 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-05-21 15:22:32.528  INFO 95940 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 6.339 seconds (JVM running for 6.842)
+2023-05-21 15:22:57.264  INFO 95940 --- [http-nio-18950-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-21 15:22:57.265  INFO 95940 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-21 15:22:57.266  INFO 95940 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-05-21 15:22:57.301  INFO 95940 --- [http-nio-18950-exec-2] c.s.b.interceptors.JWTInterceptor        : /user/logout
+2023-05-21 15:22:57.322  INFO 95940 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-21 15:22:57.869  INFO 95940 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-21 15:23:10.888  INFO 95940 --- [http-nio-18950-exec-3] c.s.b.interceptors.JWTInterceptor        : /user/logout
+2023-05-21 15:24:20.585  INFO 95940 --- [http-nio-18950-exec-6] c.s.b.interceptors.JWTInterceptor        : /user/boot-sign-in
+2023-05-21 15:24:41.638  INFO 95940 --- [http-nio-18950-exec-7] c.s.b.interceptors.JWTInterceptor        : /user/boot-sign-in
+2023-05-21 15:24:41.745  INFO 95940 --- [http-nio-18950-exec-7] c.s.b.service.impl.UserServiceImpl       : 0
+2023-05-21 15:25:26.531  INFO 95940 --- [http-nio-18950-exec-8] c.s.b.interceptors.JWTInterceptor        : /shop/get-ip
+2023-05-21 15:25:38.945  INFO 95940 --- [http-nio-18950-exec-9] c.s.b.interceptors.JWTInterceptor        : /user/logout
+2023-05-21 15:25:42.529  INFO 95940 --- [http-nio-18950-exec-10] c.s.b.interceptors.JWTInterceptor        : /shop/get-ip
+2023-05-21 15:25:54.475  INFO 95940 --- [http-nio-18950-exec-1] c.s.b.interceptors.JWTInterceptor        : /shop/get-ip
+2023-05-21 16:25:48.588  WARN 95940 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=43m50s338ms443µs600ns).
+2023-05-21 16:34:05.654  INFO 95940 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-21 16:34:05.662  INFO 95940 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
