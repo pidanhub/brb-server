@@ -67,8 +67,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean postUserHeadSculpture (String username, String path) throws SQLException {
-		return userDao.postUserHeadSculpture(username, path);
+	public void postUserHeadSculpture (String username, String path) throws SQLException {
+		userDao.postUserHeadSculpture(username, path);
 	}
 	
 	@Override
@@ -126,6 +126,11 @@ public class UserServiceImpl implements UserService {
 		}
 		userDao.addIntegral(userId);
 		return true;
+	}
+	
+	@Override
+	public boolean logout (String username) throws SQLException {
+		return userDao.userLogout(userDao.getUserIdByName(username));
 	}
 	
 }

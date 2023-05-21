@@ -5,6 +5,7 @@ import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.save.brbserver.customexception.MySecurityException;
+import com.save.brbserver.dao.UserDao;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.entity.TokenEntity;
 import com.save.brbserver.utils.JWTUtils;
@@ -12,6 +13,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -37,6 +39,8 @@ import java.util.Map;
 public class JWTInterceptor implements HandlerInterceptor {
     
     private static String secret;
+    @Autowired
+    private UserDao userDao;
     
     @Value ("${jwt.secret}")
     private void setSecret (String secret) {
@@ -52,13 +56,15 @@ public class JWTInterceptor implements HandlerInterceptor {
             if (request.getRequestURI().equals("/error"))
                 throw new Exception("bad method");
             String username = request.getParameter("username");
+            if (userDao.getUserLoginStatus(username) == null || !userDao.getUserLoginStatus(username))
+                throw new MySecurityException();
             JWTUtils.verify(token);
             Claims claims = Jwts.parser()
                     .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
                     .parseClaimsJws(token).getBody();
             if (!claims.get("username").equals(username))
                 throw new MySecurityException("Dangerous Request!");
-        
+            
             if (claims.get("type").equals("refresh")) {
                 Map<String, String> tokenMap = fetchAndReturnNewMap(claims);
                 assert tokenMap != null;
@@ -96,8 +102,8 @@ public class JWTInterceptor implements HandlerInterceptor {
 	        map.put("code", ResponseEntity.NETWORK_UNREACHABLE);
 	        map.put("message", "目标网络不可达（本地测试）");
         } catch (Exception e) {
-	        //TODO e.printStackTrace();
-	        map.put("code", ResponseEntity.METHOD_NOT_ALLOW);
+            e.printStackTrace();
+            map.put("code", ResponseEntity.METHOD_NOT_ALLOW);
 	        map.put("message", "方法不允许");
         }
     

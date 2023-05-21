@@ -18,7 +18,7 @@ public interface UserService {
 	
 	boolean userRegister (String username, String nickname, String password, String email) throws SQLException, FormatException;
 	
-	boolean postUserHeadSculpture (String username, String path) throws SQLException;
+	void postUserHeadSculpture (String username, String path) throws SQLException;
 	
 	boolean changePassword (String username, String password) throws SQLException;
 	
@@ -31,4 +31,6 @@ public interface UserService {
 	boolean setNickname (String username, String newNickname) throws SQLException;
 	
 	boolean signInBoot (String username, Integer bootId) throws SQLException, MySecurityException;
+	
+	boolean logout (String username) throws SQLException;
 }

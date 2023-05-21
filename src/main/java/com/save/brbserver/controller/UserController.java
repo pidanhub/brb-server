@@ -7,7 +7,10 @@ import com.save.brbserver.entity.TokenEntity;
 import com.save.brbserver.service.UserService;
 import com.save.brbserver.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -77,9 +80,17 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping (value = "/logout")
-	public boolean logout (@RequestParam ("username") String username) {
-		return true;
+	@PostMapping (value = "/logout")
+	public ResponseEntity<?> logout (@RequestParam ("username") String username) {
+		try {
+			if (userService.logout(username))
+				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "再见");
+			else
+				return new ResponseEntity<>(ResponseEntity.FAILED, null, "登出失败");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误");
 	}
 	
 	@PostMapping (value = "/change-pwd")

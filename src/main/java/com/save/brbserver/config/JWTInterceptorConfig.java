@@ -1,6 +1,7 @@
 package com.save.brbserver.config;
 
 import com.save.brbserver.interceptors.JWTInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -13,13 +14,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class JWTInterceptorConfig implements WebMvcConfigurer {
-    @Override
-    public void addInterceptors (InterceptorRegistry registry) {
-        registry.addInterceptor(new JWTInterceptor())
-		        .addPathPatterns("/**") // 拦截的请求
-		        .excludePathPatterns("/user/login")
-		        .excludePathPatterns("/images/**")
-                .addPathPatterns("/error")
-                .excludePathPatterns("/user/register"); // 不拦截的请求  如登录接口
-    }
+	@Bean
+	public JWTInterceptor jwtInterceptor () {
+		return new JWTInterceptor();
+	}
+	
+	@Override
+	public void addInterceptors (InterceptorRegistry registry) {
+		registry.addInterceptor(jwtInterceptor())
+				.addPathPatterns("/**") // 拦截的请求
+				.excludePathPatterns("/user/login")
+				.excludePathPatterns("/images/**")
+				.addPathPatterns("/error")
+				.excludePathPatterns("/user/register"); // 不拦截的请求  如登录接口
+	}
 }

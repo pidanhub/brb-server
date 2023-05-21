@@ -29,14 +29,14 @@ public interface UserDao {
 	void userLoginUpdateTime (@Param ("username") String username) throws SQLException;
 	
 	@Insert ("update users set head_sculpture_path=#{path} where username=#{username};")
-	boolean postUserHeadSculpture (@Param ("username") String username, @Param ("path") String path) throws SQLException;
+	void postUserHeadSculpture (@Param ("username") String username, @Param ("path") String path) throws SQLException;
 	
 	@Insert ("insert into users(username, email, password, nickname, register_time, last_login_time) " +
 			"values(#{username}, #{email}, #{password}, #{nickname}, now(), now());")
 	boolean userRegister (@Param ("username") String username, @Param ("nickname") String nickname, @Param ("password") String password, @Param ("email") String email) throws SQLException;
 	
-	
-	boolean userLogout (@Param ("username") String username) throws SQLException;
+	@Update ("update users set is_logged_in=0 where user_id=#{id};")
+	boolean userLogout (@Param ("id") Long userId) throws SQLException;
 	
 	@Select ("select user_id from users where username = #{username} or email=#{username};")
 	Long getUserIdByName (@Param ("username") String username) throws SQLException;
@@ -45,7 +45,7 @@ public interface UserDao {
 			"from users where user_id=#{userId};")
 	Map<String, Object> getSimpleUserInfo (@Param ("userId") Long userId) throws SQLException;
 	
-	@Update ("update users set integral = integral + 1 where user_id=#{userId}")
+	@Update ("update users set integral = integral + 1 where user_id=#{userId};")
 	void addIntegral (@Param ("userId") Long userId) throws SQLException;
 	
 	@Update ("update users set introduction=#{info} where user_id=#{id};")
@@ -59,5 +59,8 @@ public interface UserDao {
 	
 	@Select ("select count(*) from moments where user_id=#{userId} GROUP BY user_id;")
 	Integer countUserMoments (@Param ("userId") Long userId) throws SQLException;
+	
+	@Select ("select is_logged_in from users where username=#{username};")
+	Boolean getUserLoginStatus (@Param ("username") String username) throws SQLException;
 	
 }
