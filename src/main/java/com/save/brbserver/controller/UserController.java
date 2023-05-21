@@ -1,6 +1,7 @@
 package com.save.brbserver.controller;
 
 import com.save.brbserver.customexception.FormatException;
+import com.save.brbserver.customexception.MySecurityException;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.entity.TokenEntity;
 import com.save.brbserver.service.UserService;
@@ -100,6 +101,22 @@ public class UserController {
 	public ResponseEntity<?> changeNickname (@RequestParam ("username") String username, @RequestParam ("nickname") String newNickname) {
 		try {
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, userService.setNickname(username, newNickname), "修改成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FAILED, false, "未知错误");
+		}
+	}
+	
+	@PostMapping ("/boot-sign-in")
+	public ResponseEntity<?> signIn (@RequestParam ("username") String username) {
+		try {
+			if (userService.signInBoot(username, 1))
+				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "签到成功");
+			else
+				return new ResponseEntity<>(ResponseEntity.SIGN_IN_LESS_THAN_ONE_DAY, null, "不能一天内签到多次");
+		} catch (MySecurityException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.DANGEROUS, null, "不安全的请求，签到时间在记录之后");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(ResponseEntity.FAILED, false, "未知错误");

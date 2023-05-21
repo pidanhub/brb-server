@@ -14,9 +14,9 @@ import java.util.Set;
 
 public interface ShopService {
 	
-	List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String prefecture) throws SQLException;
+	List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String username, String prefecture) throws SQLException;
 	
-	Set<ItHouseIP> selectIPByName (String name) throws SQLException;
+	Set<ItHouseIP> selectIPByName (String username, String name) throws SQLException;
 	
 	boolean favorite (String username, int id, int type) throws SQLException;
 	

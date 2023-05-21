@@ -1,6 +1,8 @@
 package com.save.brbserver.service.impl;
 
 import com.save.brbserver.customexception.FormatException;
+import com.save.brbserver.customexception.MySecurityException;
+import com.save.brbserver.dao.BootSignInDao;
 import com.save.brbserver.dao.UserDao;
 import com.save.brbserver.entity.User;
 import com.save.brbserver.service.UserService;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +30,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private BootSignInDao bootSignInDao;
 	
 	@Override
 	@Transactional (rollbackFor = Exception.class)
@@ -53,6 +58,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional (rollbackFor = Exception.class)
+	@SuppressWarnings ("all")
 	public boolean userRegister (String username, String nickname, String password, String email) throws SQLException, FormatException {
 		if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
 			throw new FormatException();
@@ -78,7 +84,14 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public Map<String, Object> getSimpleUserInfo (String username) throws SQLException {
-		return userDao.getSimpleUserInfo(userDao.getUserIdByName(username));
+		Long userId = userDao.getUserIdByName(username);
+		Map<String, Object> map = userDao.getSimpleUserInfo(userId);
+		map.put("momentsCount", userDao.countUserMoments(userId));
+		map.put("favoriteCount", userDao.countUserFavorite(userId));
+		map.put("signInCount", bootSignInDao.getSignInCount(userId, 1));
+		map.put("signInMaxCount", bootSignInDao.getMaxSignInCount(userId, 1));
+		map.put("totalSignInCount", bootSignInDao.getTotalSignInCount(userId, 1));
+		return map;
 	}
 	
 	@Override
@@ -90,6 +103,29 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean setNickname (String username, String newNickname) throws SQLException {
 		return userDao.setNickname(userDao.getUserIdByName(username), newNickname);
+	}
+	
+	@Override
+	@Transactional (rollbackFor = Exception.class)
+	public boolean signInBoot (String username, Integer bootId) throws SQLException, MySecurityException {
+		Long userId = userDao.getUserIdByName(username);
+		Date date = bootSignInDao.getLastTime(userId, bootId);
+		Date now = new Date();
+		if (now.before(date))
+			throw new MySecurityException();
+		long diff = Math.abs(date.getTime() - now.getTime()) / (1000 * 3600 * 24);
+		log.info(String.valueOf(diff));
+		if (diff == 0) {
+			return false;
+		}
+		else if (diff == 1) {
+			bootSignInDao.signInContinuous(userId, bootId);
+		}
+		else {
+			bootSignInDao.signInDisContinuous(userId, bootId);
+		}
+		userDao.addIntegral(userId);
+		return true;
 	}
 	
 }

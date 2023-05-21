@@ -1,5 +1,6 @@
 package com.save.brbserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString
+@JsonInclude (JsonInclude.Include.NON_NULL)
 public class User implements Serializable {
 	
 	private Long userId;
@@ -36,5 +38,10 @@ public class User implements Serializable {
 	private boolean isLoggedIn;
 	
 	private Long integral;
+	private Integer momentsCount;
+	private Integer favoriteCount;
+	private Integer signInCount;
+	private Integer totalSignInCount;
+	private Integer signInMaxCount;
 	
 }

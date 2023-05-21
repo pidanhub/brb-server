@@ -41,17 +41,23 @@ public interface UserDao {
 	@Select ("select user_id from users where username = #{username} or email=#{username};")
 	Long getUserIdByName (@Param ("username") String username) throws SQLException;
 	
-	@Select ("select username,email,nickname,gender,introduction,address,head_sculpture_path " +
+	@Select ("select username,email,nickname,gender,introduction,address,head_sculpture_path,integral " +
 			"from users where user_id=#{userId};")
 	Map<String, Object> getSimpleUserInfo (@Param ("userId") Long userId) throws SQLException;
 	
 	@Update ("update users set integral = integral + 1 where user_id=#{userId}")
-	boolean addIntegral (@Param ("userId") Long userId) throws SQLException;
+	void addIntegral (@Param ("userId") Long userId) throws SQLException;
 	
 	@Update ("update users set introduction=#{info} where user_id=#{id};")
 	boolean setInfo (@Param ("id") Long id, @Param ("info") String info) throws SQLException;
 	
 	@Update ("update users set nickname=#{nickname} where user_id=#{id};")
 	boolean setNickname (@Param ("id") Long id, @Param ("nickname") String newNickname) throws SQLException;
+	
+	@Select ("select count(*) from user_ip_favorite where user_id=#{userId};")
+	Integer countUserFavorite (@Param ("userId") Long userId) throws SQLException;
+	
+	@Select ("select count(*) from moments where user_id=#{userId} GROUP BY user_id;")
+	Integer countUserMoments (@Param ("userId") Long userId) throws SQLException;
 	
 }

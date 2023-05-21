@@ -30,7 +30,7 @@ public class ShopController {
 		try {
 			prefecture = prefecture.replaceAll("[ ]", "");
 			return new ResponseEntity<>(ResponseEntity.SUCCESS,
-					shopService.selectAllIPsOfCurrentPrefecture(prefecture),
+					shopService.selectAllIPsOfCurrentPrefecture(username, prefecture),
 					"成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class ShopController {
 	@Transactional (rollbackFor = Exception.class)
 	public ResponseEntity<?> searchByName (@RequestParam ("username") String username, @RequestParam ("name") String goodName) {
 		try {
-			return new ResponseEntity<>(ResponseEntity.SUCCESS, shopService.selectIPByName(goodName), "获取成功");
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, shopService.selectIPByName(username, goodName), "获取成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(ResponseEntity.FAILED, null, "发生未知错误");
@@ -50,7 +50,6 @@ public class ShopController {
 	}
 	
 	@PostMapping ("/add-delete-favorite")
-	@Transactional (rollbackFor = Exception.class)
 	public ResponseEntity<?> operationOnFavorite (@RequestParam ("username") String username,
 	                                              @RequestParam ("id") int id, @RequestParam ("type") int type) {
 		try {

@@ -30,18 +30,34 @@ public class ShopServiceImpl implements ShopService {
 	
 	//TODO 标识ip中已经收藏的部分
 	@Override
-	public List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String prefecture) throws SQLException {
+	@Transactional (rollbackFor = Exception.class)
+	public List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String username, String prefecture) throws SQLException {
 		int typeId = shopDao.selectIpPrefecture(prefecture);
-		return shopDao.selectAllIPsOfCurrentPrefecture(typeId);
+		List<ItHouseIP> list = shopDao.selectAllIPsOfCurrentPrefecture(typeId);
+		if (list.size() != 0) {
+			Set<Integer> set = shopDao.findUserFavorites(userDao.getUserIdByName(username));
+			if (set.size() != 0)
+				for (ItHouseIP ip : list)
+					if (set.contains(ip.getIpId()))
+						ip.setFavorite(true);
+		}
+		return list;
 	}
 	
 	@Override
-	public Set<ItHouseIP> selectIPByName (String name) throws SQLException {
+	public Set<ItHouseIP> selectIPByName (String username, String name) throws SQLException {
 		String[] names = name.split(" ");
 		Set<ItHouseIP> set = new HashSet<>();
 		for (String s : names) {
 			List<ItHouseIP> list = shopDao.selectOneIPByName(s);
 			set.addAll(list);
+		}
+		if (set.size() != 0) {
+			Set<Integer> favorites = shopDao.findUserFavorites(userDao.getUserIdByName(username));
+			if (favorites.size() != 0)
+				for (ItHouseIP ip : set)
+					if (favorites.contains(ip.getIpId()))
+						ip.setFavorite(true);
 		}
 		return set;
 	}

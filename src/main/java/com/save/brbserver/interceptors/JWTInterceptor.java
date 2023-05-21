@@ -82,6 +82,7 @@ public class JWTInterceptor implements HandlerInterceptor {
             e.printStackTrace();
 	        map.put("code", ResponseEntity.TOKEN_OUT_OF_TIME);
 	        map.put("message", "token过期");
+            response.setHeader("Lapsed", "true");
         } catch (AlgorithmMismatchException e) {//算法不匹配
 	        e.printStackTrace();
 	        map.put("code", ResponseEntity.FAILED);

@@ -1,6 +1,7 @@
 package com.save.brbserver.service;
 
 import com.save.brbserver.customexception.FormatException;
+import com.save.brbserver.customexception.MySecurityException;
 
 import java.sql.SQLException;
 import java.util.Map;
@@ -28,4 +29,6 @@ public interface UserService {
 	boolean setInfo (String username, String info) throws SQLException;
 	
 	boolean setNickname (String username, String newNickname) throws SQLException;
+	
+	boolean signInBoot (String username, Integer bootId) throws SQLException, MySecurityException;
 }
