@@ -1,5 +1,6 @@
 package com.save.brbserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,10 +23,13 @@ public class Activity {
 	
 	private Long activId;
 	private String name;
+	@JsonInclude (JsonInclude.Include.NON_NULL)
 	private Long belongsTo;
 	private String activInfo;
 	private Timestamp startTime;
 	private String activLocation;
 	private Boolean isEnd;
+	
+	private String organizationName;
 	
 }

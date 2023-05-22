@@ -27,6 +27,17 @@ public class ActivitiesController {
 	@Autowired
 	private ActivitiesService activitiesService;
 	
+	@PostMapping ("/get-all")
+	public ResponseEntity<?> getAllActivities (@RequestParam ("username") String username) {
+		try {
+			List<Activity> allActivities = activitiesService.getALLActivities();
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, allActivities, "获取成功");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "刷新重试");
+		}
+	}
+	
 	@PostMapping ("/get-sign-in")
 	public ResponseEntity<?> getThoseActivitiesUserHadJoinedAndSignedIn (@RequestParam ("username") String username) {
 		try {
@@ -75,12 +86,12 @@ public class ActivitiesController {
 			e.printStackTrace();
 			Throwable cause = e.getCause();
 			if (cause instanceof SQLIntegrityConstraintViolationException)
-				return new ResponseEntity<>(ResponseEntity.UNIQUE_FIELD_ALREADY_EXIST, null, "已经报名过，不要重复报名");
+				return new ResponseEntity<>(ResponseEntity.UNIQUE_FIELD_ALREADY_EXIST, false, "已经报名过，不要重复报名");
 		}
-		return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误，报名失败");
+		return new ResponseEntity<>(ResponseEntity.FAILED, false, "未知错误，报名失败");
 	}
 	
-	@PostMapping ("/sign-up")
+	@PostMapping ("/sign-in")
 	public ResponseEntity<?> signIn (@RequestParam ("username") String username, @RequestParam ("activityId") Long activId) {
 		try {
 			if (activitiesService.signInActivity(username, activId))
@@ -91,9 +102,9 @@ public class ActivitiesController {
 			e.printStackTrace();
 			Throwable cause = e.getCause();
 			if (cause instanceof SQLIntegrityConstraintViolationException)
-				return new ResponseEntity<>(ResponseEntity.UNIQUE_FIELD_ALREADY_EXIST, null, "已经签到过，不要重复签到");
+				return new ResponseEntity<>(ResponseEntity.UNIQUE_FIELD_ALREADY_EXIST, false, "已经签到过，不要重复签到");
 		}
-		return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误，签到失败");
+		return new ResponseEntity<>(ResponseEntity.FAILED, false, "未知错误，签到失败");
 	}
 	
 }

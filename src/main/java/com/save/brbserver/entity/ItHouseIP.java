@@ -23,6 +23,7 @@ public class ItHouseIP {
 	private Double star;
 	private Long owner;
 	private String coverPath;
+	private String info;
 	
 	private boolean isFavorite;
 }

@@ -18,20 +18,23 @@ public interface ActivityDao {
 	@Insert ("insert into activities(`name`, belongs_to, activ_info, starttime, activ_location) values(#{name},#{belongsTo},#{activInfo},#{startTime},#{activLocation});")
 	@Options (useGeneratedKeys = true, keyProperty = "activId", keyColumn = "activ_id")
 	Long addActivity (Activity activity) throws SQLException;
+
+//	@Select ("")
+//	Long getActivityId () throws SQLException;
 	
-	@Select ("")
-	Long getActivityId () throws SQLException;
-	
-	@Select ("select * from activities;")
+	@Select ("select activ_id,name,activ_info,starttime,activ_location,is_end,o_name as organizationName from activities,organizations " +
+			"where activities.belongs_to=organizations.o_id;")
 	List<Activity> getAllActivities () throws SQLException;
 	
 	@Insert ("insert into user_activs (#{u}, #{a}, 0);")
 	void oneSignINActivity (@Param ("u") Long uId, @Param ("a") Long aId) throws SQLException;
 	
-	@Select ("select * from activities where activ_id in (select a_id from user_activs where u_id=#{userId});")
+	@Select ("select activ_id,name,activ_info,starttime,activ_location,is_end,o_name as organizationName from activities,organizations " +
+			"where activ_id in (select a_id from user_activs where u_id=#{userId}) and activities.belongs_to=organizations.o_id;")
 	List<Activity> getALLActivitiesUserHadJoined (@Param ("userId") Long userId) throws SQLException;
 	
-	@Select ("select * from activities where activ_id in (select a_id from user_activs where u_id=#{userId} and is_sign_in=1);")
+	@Select ("select activ_id,name,activ_info,starttime,activ_location,is_end,o_name as organizationName from activities,organizations " +
+			"where activ_id in (select a_id from user_activs where u_id=#{userId} and is_sign_in=1) and activities.belongs_to=organizations.o_id;")
 	List<Activity> getThoseActivitiesUserHadJoinedAndSignedIn (@Param ("userId") Long userId) throws SQLException;
 	
 	@Insert ("insert into user_activs values(#{userId}, #{activityId}, 0);")

@@ -67,4 +67,9 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 		return activityDao.signInActivity(userDao.getUserIdByName(username), aId);
 	}
 	
+	@Override
+	public List<Activity> getALLActivities () throws SQLException {
+		return activityDao.getAllActivities();
+	}
+	
 }

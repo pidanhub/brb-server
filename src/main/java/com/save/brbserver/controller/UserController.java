@@ -40,7 +40,7 @@ public class UserController {
 			if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
 				throw new FormatException();
 			String s = mailMsg.getRedisTemplate().opsForValue().get(email);
-			if (s == null || !s.equals(verificationCode))
+			if (s == null || !s.equalsIgnoreCase(verificationCode))
 				return new ResponseEntity<>(ResponseEntity.VERIFY_CODE_WRONG, false, "验证码错误");
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, userService.userRegister(username, nickname, password, email), "注册成功");
 		} catch (FormatException e) {

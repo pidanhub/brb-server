@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * @Author:Zzs
@@ -58,8 +59,12 @@ public class ShopController {
 				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			Throwable cause = e.getCause();
+			if (cause instanceof SQLIntegrityConstraintViolationException)
+				return new ResponseEntity<>(ResponseEntity.UNIQUE_FIELD_ALREADY_EXIST, false, "拒绝重复收藏或取消收藏");
+			return new ResponseEntity<>(ResponseEntity.FAILED, false, "未知错误");
 		}
-		// TODO 无论SQL异常或是id不对，都返回错误码
 		return new ResponseEntity<>(ResponseEntity.FAILED, null, "失败");
 	}
 	

@@ -22,4 +22,6 @@ public interface ActivitiesService {
 	boolean signUpActivity (String username, Long aId) throws SQLException;
 	
 	boolean signInActivity (String username, Long aId) throws SQLException;
+	
+	List<Activity> getALLActivities () throws SQLException;
 }
