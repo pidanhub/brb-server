@@ -68,4 +68,13 @@ public class ShopController {
 		return new ResponseEntity<>(ResponseEntity.FAILED, null, "失败");
 	}
 	
+	@PostMapping ("/get-favorite")
+	public ResponseEntity<?> getUserFavorite (@RequestParam ("username") String username) {
+		try {
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, shopService.getUserFavorite(username), "获取成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(ResponseEntity.FAILED, null, "未知错误");
+	}
 }

@@ -20,4 +20,6 @@ public interface ShopService {
 	
 	boolean favorite (String username, int id, int type) throws SQLException;
 	
+	List<ItHouseIP> getUserFavorite (String username) throws SQLException;
+	
 }

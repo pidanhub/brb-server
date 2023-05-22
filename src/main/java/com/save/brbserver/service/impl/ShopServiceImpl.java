@@ -39,7 +39,7 @@ public class ShopServiceImpl implements ShopService {
 			if (set.size() != 0)
 				for (ItHouseIP ip : list)
 					if (set.contains(ip.getIpId()))
-						ip.setFavorite(true);
+						ip.setIsFavorite(true);
 		}
 		return list;
 	}
@@ -57,7 +57,7 @@ public class ShopServiceImpl implements ShopService {
 			if (favorites.size() != 0)
 				for (ItHouseIP ip : set)
 					if (favorites.contains(ip.getIpId()))
-						ip.setFavorite(true);
+						ip.setIsFavorite(true);
 		}
 		return set;
 	}
@@ -73,6 +73,11 @@ public class ShopServiceImpl implements ShopService {
 				return shopDao.deleteFavorite(userId, id);
 		}
 		return false;
+	}
+	
+	@Override
+	public List<ItHouseIP> getUserFavorite (String username) throws SQLException {
+		return shopDao.getUserFavorite(userDao.getUserIdByName(username));
 	}
 	
 }

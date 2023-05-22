@@ -27,4 +27,6 @@ public interface OrganizationsDao {
 	@Select ("select o_name, part_in_time, introduction, cover from organizations o, user_organization ou where o.o_id=ou.o_id and u_id=#{userId};")
 	List<Organization> getJoinedOg (@Param ("userId") Long userId) throws SQLException;
 	
+	@Select ("select o_id from organizations where o_name=#{o};")
+	Long getOrganizationIdByName (@Param ("o") String organizationName) throws SQLException;
 }

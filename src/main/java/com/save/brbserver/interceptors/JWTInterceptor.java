@@ -57,15 +57,17 @@ public class JWTInterceptor implements HandlerInterceptor {
 		        throw new Exception("bad method");
 	        String usernameOrEmail = request.getParameter("username");
 //            log.info(userDao.getUserLoginStatus(usernameOrEmail).toString());
-	        if (userDao.getUserLoginStatus(usernameOrEmail) == null || !userDao.getUserLoginStatus(usernameOrEmail))
+	        Boolean is = userDao.getUserLoginStatus(usernameOrEmail);
+	        if (is == null || !is)
 		        throw new MySecurityException();
 	        JWTUtils.verify(token);
 	        Claims claims = Jwts.parser()
 			        .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
 			        .parseClaimsJws(token).getBody();
-	        log.info(claims.get("e-mail").toString());
-	        log.info(claims.get("username").toString());
-	        log.info(usernameOrEmail);
+	        //debug
+//	        log.info(claims.get("e-mail").toString());
+//	        log.info(claims.get("username").toString());
+//	        log.info(usernameOrEmail);
 	        if (!(claims.get("username").equals(usernameOrEmail) || claims.get("e-mail").equals(usernameOrEmail)))
 		        throw new MySecurityException("Dangerous Request!");
 	

@@ -17,11 +17,14 @@ public interface ActivitiesService {
 	
 	List<Activity> getALLActivitiesUserHadJoined (String username) throws SQLException;
 	
-	Long addActivity (String username, String name, String info, Timestamp startTime, String location) throws SQLException;
+	Long addActivity (String username, String organizationName, String name, String info, Timestamp startTime, String location) throws SQLException;
 	
 	boolean signUpActivity (String username, Long aId) throws SQLException;
 	
 	boolean signInActivity (String username, Long aId) throws SQLException;
 	
-	List<Activity> getALLActivities () throws SQLException;
+	List<Activity> getALLActivities (String username) throws SQLException;
+	
+	List<Activity> getThoseActivitiesUserHadJoinedAndIsEnd (String username) throws SQLException;
+	
 }

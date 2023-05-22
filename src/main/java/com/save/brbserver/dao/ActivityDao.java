@@ -4,7 +4,9 @@ import com.save.brbserver.entity.Activity;
 import org.apache.ibatis.annotations.*;
 
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author:Zzs
@@ -42,4 +44,18 @@ public interface ActivityDao {
 	
 	@Update ("update user_activs set is_sign_in = 1 where u_id=#{userId} and a_id=#{activityId};")
 	boolean signInActivity (@Param ("userId") Long userId, @Param ("activityId") Long activityId) throws SQLException;
+	
+	@Select ("select activ_id from activities,organizations " +
+			"where activ_id in (select a_id from user_activs where u_id=#{userId}) and activities.belongs_to=organizations.o_id;")
+	Set<Long> getALLActivitiesUserHadJoinedId (@Param ("userId") Long userId) throws SQLException;
+	
+	@Select ("select activ_id from activities,organizations " +
+			"where activ_id in (select a_id from user_activs where u_id=#{userId} and is_sign_in=1) and activities.belongs_to=organizations.o_id;")
+	Set<Long> getThoseActivitiesUserHadJoinedAndSignedInId (@Param ("userId") Long userId) throws SQLException;
+	
+	@Update ("update activities set is_end = 1 where activ_id in (${activityId}) and is_end = 0;")
+	void setEnd (@Param ("activityId") String activityId) throws SQLException;
+	
+	@Select ("select * from activities where activ_id in (select a_id from user_activs where u_id=#{userId}) and is_end=1;")
+	HashSet<Activity> getThoseActivitiesUserHadJoinedAndIsEnd (@Param ("userId") Long userId) throws SQLException;
 }

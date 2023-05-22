@@ -19,6 +19,9 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+//@Setter
+//@Getter
+@JsonInclude (JsonInclude.Include.NON_NULL)
 public class Activity {
 	
 	private Long activId;
@@ -31,5 +34,9 @@ public class Activity {
 	private Boolean isEnd;
 	
 	private String organizationName;
+	@JsonInclude (JsonInclude.Include.NON_NULL)
+	private Boolean isSignedUp;
+	@JsonInclude (JsonInclude.Include.NON_NULL)
+	private Boolean isSigndedIn;
 	
 }

@@ -34,4 +34,6 @@ public interface ShopDao {
 	@Select ("select ip_id from user_ip_favorite where user_id=#{userId};")
 	Set<Integer> findUserFavorites (@Param ("userId") Long userId) throws SQLException;
 	
+	@Select ("select * from ips where ips.ip_id in (select ip_id from user_ip_favorite where user_id=#{userId});")
+	List<ItHouseIP> getUserFavorite (@Param ("userId") Long userId) throws SQLException;
 }

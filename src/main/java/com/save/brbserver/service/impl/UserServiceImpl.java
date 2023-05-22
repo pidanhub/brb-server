@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService {
 		if (now.before(date))
 			throw new MySecurityException();
 		long diff = Math.abs(date.getTime() - now.getTime()) / (1000 * 3600 * 24);
-		log.info(String.valueOf(diff));
+//		log.info(String.valueOf(diff));
 		if (diff == 0) {
 			return false;
 		}

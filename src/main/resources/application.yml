@@ -28,6 +28,11 @@ spring:
   web:
     resources:
       static-locations: file:/images
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: zzsroot666!
+    timeout: 10000
 
 mybatis:
   type-aliases-package: com.save.brbserver.entity

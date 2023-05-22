@@ -30,7 +30,7 @@ public class ActivitiesController {
 	@PostMapping ("/get-all")
 	public ResponseEntity<?> getAllActivities (@RequestParam ("username") String username) {
 		try {
-			List<Activity> allActivities = activitiesService.getALLActivities();
+			List<Activity> allActivities = activitiesService.getALLActivities(username);
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, allActivities, "获取成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,11 +63,11 @@ public class ActivitiesController {
 	}
 	
 	@PostMapping ("/add")
-	public ResponseEntity<?> addActivity (@RequestParam ("username") String username, @RequestParam ("name") String name, @RequestParam ("info") String info,
+	public ResponseEntity<?> addActivity (@RequestParam ("username") String username, @RequestParam ("organizationName") String organizationName, @RequestParam ("name") String name, @RequestParam ("info") String info,
 	                                      @RequestParam ("starttime") String startTime, @RequestParam ("location") String location) {
 		try {
 			//同时主人也会参加活动
-			Long id = activitiesService.addActivity(username, name, info, Timestamp.valueOf(startTime), location);
+			Long id = activitiesService.addActivity(username, organizationName, name, info, Timestamp.valueOf(startTime), location);
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, id, "成功创建活动");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -105,6 +105,18 @@ public class ActivitiesController {
 				return new ResponseEntity<>(ResponseEntity.UNIQUE_FIELD_ALREADY_EXIST, false, "已经签到过，不要重复签到");
 		}
 		return new ResponseEntity<>(ResponseEntity.FAILED, false, "未知错误，签到失败");
+	}
+	
+	@PostMapping ("/joined-end")
+	public ResponseEntity<?> getThoseActivitiesUserHadJoinedAndIsEnd (@RequestParam ("username") String username) {
+		try {
+			List<Activity> getALLActivitiesUserHadJoined =
+					activitiesService.getThoseActivitiesUserHadJoinedAndIsEnd(username);
+			return new ResponseEntity<>(ResponseEntity.SUCCESS, getALLActivitiesUserHadJoined, "获取成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.FAILED, null, "刷新重试");
+		}
 	}
 	
 }
