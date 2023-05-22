@@ -56,4 +56,15 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 		userDao.addIntegral(userId);
 		return activity.getActivId();
 	}
+	
+	@Override
+	public boolean signUpActivity (String username, Long aId) throws SQLException {
+		return activityDao.signUpActivity(userDao.getUserIdByName(username), aId);
+	}
+	
+	@Override
+	public boolean signInActivity (String username, Long aId) throws SQLException {
+		return activityDao.signInActivity(userDao.getUserIdByName(username), aId);
+	}
+	
 }
