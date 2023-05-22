@@ -6,6 +6,7 @@ import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.entity.TokenEntity;
 import com.save.brbserver.service.UserService;
 import com.save.brbserver.utils.JWTUtils;
+import com.save.brbserver.utils.MailMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +30,18 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private MailMsg mailMsg;
 	
 	@PostMapping (value = "/register")
 	public ResponseEntity<?> userRegister (@RequestParam ("username") String username, @RequestParam ("nickname") String nickname, @RequestParam ("password") String password, @RequestParam ("email") String email,
 	                                       @RequestParam ("verify-code") String verificationCode) {
 		try {
+			if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
+				throw new FormatException();
+			String s = mailMsg.getRedisTemplate().opsForValue().get(email);
+			if (s == null || !s.equals(verificationCode))
+				return new ResponseEntity<>(ResponseEntity.VERIFY_CODE_WRONG, false, "验证码错误");
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, userService.userRegister(username, nickname, password, email), "注册成功");
 		} catch (FormatException e) {
 			e.printStackTrace();

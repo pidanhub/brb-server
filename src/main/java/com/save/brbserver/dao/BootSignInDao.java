@@ -1,9 +1,6 @@
 package com.save.brbserver.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -37,5 +34,8 @@ public interface BootSignInDao {
 	
 	@Select ("select all_sign_in_count from boot_user_sign_in where user_id=#{u} and boot_id=#{b};")
 	Integer getTotalSignInCount (@Param ("u") Long userId, @Param ("b") Integer signId) throws SQLException;
+	
+	@Insert ("insert into boot_user_sign_in value(#{u}, #{b}, 1, 1, now(), 1);")
+	boolean startSignIn (@Param ("u") Long userId, @Param ("b") Integer signId) throws SQLException;
 	
 }

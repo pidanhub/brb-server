@@ -25,6 +25,7 @@ public class JWTInterceptorConfig implements WebMvcConfigurer {
 				.addPathPatterns("/**") // 拦截的请求
 				.excludePathPatterns("/user/login")
 				.excludePathPatterns("/images/**")
+				.excludePathPatterns("/mail/register-code")
 				.addPathPatterns("/error")
 				.excludePathPatterns("/user/register"); // 不拦截的请求  如登录接口
 	}

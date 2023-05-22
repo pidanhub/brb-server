@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * @Author:Zzs
- * @Description: Og
+ * @Description: Og maybe 注册组织，自由加入、退出组织、审核制加入
  * @DateTime: 2023/5/20 21:58
  **/
 

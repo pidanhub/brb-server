@@ -53,26 +53,30 @@ public class JWTInterceptor implements HandlerInterceptor {
         String token = request.getHeader("Authorization");
         log.info(request.getRequestURI());
         try {
-            if (request.getRequestURI().equals("/error"))
-                throw new Exception("bad method");
-            String username = request.getParameter("username");
-            if (userDao.getUserLoginStatus(username) == null || !userDao.getUserLoginStatus(username))
-                throw new MySecurityException();
-            JWTUtils.verify(token);
-            Claims claims = Jwts.parser()
-                    .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
-                    .parseClaimsJws(token).getBody();
-            if (!claims.get("username").equals(username))
-                throw new MySecurityException("Dangerous Request!");
-            
-            if (claims.get("type").equals("refresh")) {
-                Map<String, String> tokenMap = fetchAndReturnNewMap(claims);
-                assert tokenMap != null;
-                TokenEntity tokenEntity = JWTUtils.getToken(tokenMap);
-                response.setHeader("Authorization-to-request", tokenEntity.getToAuthentication());
-                response.setHeader("Authorization-to-refresh", tokenEntity.getToRefresh());
-            }
-            else
+	        if (request.getRequestURI().equals("/error"))
+		        throw new Exception("bad method");
+	        String usernameOrEmail = request.getParameter("username");
+//            log.info(userDao.getUserLoginStatus(usernameOrEmail).toString());
+	        if (userDao.getUserLoginStatus(usernameOrEmail) == null || !userDao.getUserLoginStatus(usernameOrEmail))
+		        throw new MySecurityException();
+	        JWTUtils.verify(token);
+	        Claims claims = Jwts.parser()
+			        .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
+			        .parseClaimsJws(token).getBody();
+	        log.info(claims.get("e-mail").toString());
+	        log.info(claims.get("username").toString());
+	        log.info(usernameOrEmail);
+	        if (!(claims.get("username").equals(usernameOrEmail) || claims.get("e-mail").equals(usernameOrEmail)))
+		        throw new MySecurityException("Dangerous Request!");
+	
+	        if (claims.get("type").equals("refresh")) {
+		        Map<String, String> tokenMap = fetchAndReturnNewMap(claims);
+		        assert tokenMap != null;
+		        TokenEntity tokenEntity = JWTUtils.getToken(tokenMap);
+		        response.setHeader("Authorization-to-request", tokenEntity.getToAuthentication());
+		        response.setHeader("Authorization-to-refresh", tokenEntity.getToRefresh());
+	        }
+	        else
                 response.setHeader("Authorization", request.getHeader("Authorization"));
             return true;
         } catch (MySecurityException e) {

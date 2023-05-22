@@ -2,6 +2,19 @@ server:
   port: 18950
 
 spring:
+  mail:
+    host: smtp.qq.com
+    username: 2476594519@qq.com
+    password: ivccswxyrtxvecje
+    default-encoding: UTF-8
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+          #表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误
+          debug: true
+          ssl: true
   datasource:
     url: jdbc:mysql://101.43.242.216:3306/brbdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root

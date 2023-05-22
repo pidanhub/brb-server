@@ -60,8 +60,6 @@ public class UserServiceImpl implements UserService {
 	@Transactional (rollbackFor = Exception.class)
 	@SuppressWarnings ("all")
 	public boolean userRegister (String username, String nickname, String password, String email) throws SQLException, FormatException {
-		if (!email.matches("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"))
-			throw new FormatException();
 		String encodePassword = DigestUtils.md5Hex(password);
 		return userDao.userRegister(username, nickname, encodePassword, email);
 	}
@@ -110,6 +108,9 @@ public class UserServiceImpl implements UserService {
 	public boolean signInBoot (String username, Integer bootId) throws SQLException, MySecurityException {
 		Long userId = userDao.getUserIdByName(username);
 		Date date = bootSignInDao.getLastTime(userId, bootId);
+		if (date == null) {
+			return bootSignInDao.startSignIn(userId, bootId);
+		}
 		Date now = new Date();
 		if (now.before(date))
 			throw new MySecurityException();

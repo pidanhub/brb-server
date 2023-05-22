@@ -34,6 +34,10 @@ public class ResponseEntity<T> {
 	public static final int UNIQUE_FIELD_ALREADY_EXIST = 102;
 	public static final int WRONG_NUMBERINGS = 103;
 	public static final int SIGN_IN_LESS_THAN_ONE_DAY = 104;
+	public static final int VERIFY_CODE_WRONG = 105;
+	
 	public static final int NETWORK_UNREACHABLE = 1000;
+	public static final int EMAIL_SEND_FAILED = 1001;
+	public static final int VERIFY_CODE_EXIST = 999;
 	
 }

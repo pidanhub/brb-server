@@ -60,7 +60,7 @@ public interface UserDao {
 	@Select ("select count(*) from moments where user_id=#{userId} GROUP BY user_id;")
 	Integer countUserMoments (@Param ("userId") Long userId) throws SQLException;
 	
-	@Select ("select is_logged_in from users where username=#{username};")
+	@Select ("select is_logged_in from users where username=#{username} or email=#{username};")
 	Boolean getUserLoginStatus (@Param ("username") String username) throws SQLException;
 	
 }
