@@ -28,7 +28,6 @@ public class ShopServiceImpl implements ShopService {
 	@Autowired
 	private UserDao userDao;
 	
-	//TODO 标识ip中已经收藏的部分
 	@Override
 	@Transactional (rollbackFor = Exception.class)
 	public List<ItHouseIP> selectAllIPsOfCurrentPrefecture (String username, String prefecture) throws SQLException {
@@ -36,9 +35,15 @@ public class ShopServiceImpl implements ShopService {
 		List<ItHouseIP> list = shopDao.selectAllIPsOfCurrentPrefecture(typeId);
 		if (list.size() != 0) {
 			Set<Integer> set = shopDao.findUserFavorites(userDao.getUserIdByName(username));
-			if (set.size() != 0)
+			if (set != null) {
 				for (ItHouseIP ip : list)
 					ip.setIsFavorite(set.contains(ip.getIpId()));
+			}
+			else {
+				for (ItHouseIP ip : list)
+					ip.setIsFavorite(false);
+			}
+			
 		}
 		return list;
 	}
@@ -53,9 +58,14 @@ public class ShopServiceImpl implements ShopService {
 		}
 		if (set.size() != 0) {
 			Set<Integer> favorites = shopDao.findUserFavorites(userDao.getUserIdByName(username));
-			if (favorites.size() != 0)
+			if (favorites != null) {
 				for (ItHouseIP ip : set)
 					ip.setIsFavorite(favorites.contains(ip.getIpId()));
+			}
+			else
+				for (ItHouseIP ip : set)
+					ip.setIsFavorite(false);
+			
 		}
 		return set;
 	}
@@ -75,7 +85,10 @@ public class ShopServiceImpl implements ShopService {
 	
 	@Override
 	public List<ItHouseIP> getUserFavorite (String username) throws SQLException {
-		return shopDao.getUserFavorite(userDao.getUserIdByName(username));
+		List<ItHouseIP> list = shopDao.getUserFavorite(userDao.getUserIdByName(username));
+		for (ItHouseIP ih : list)
+			ih.setIsFavorite(true);
+		return list;
 	}
 	
 }

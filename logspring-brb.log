@@ -446,3 +446,26 @@ java.sql.SQLSyntaxErrorException: Unknown column 'u_id' in 'where clause'
 2023-05-23 11:58:25.601  INFO 83028 --- [http-nio-18950-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
 2023-05-23 11:59:28.194  INFO 83028 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-05-23 11:59:28.205  INFO 83028 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-23 13:41:16.459  INFO 30056 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 30056 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-05-23 13:41:16.509  INFO 30056 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-05-23 13:41:21.385  INFO 30056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-23 13:41:21.394  INFO 30056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-23 13:41:21.450  INFO 30056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+2023-05-23 13:41:22.592  INFO 30056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$1a981173] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-23 13:41:22.748  INFO 30056 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-05-23 13:41:24.829  INFO 30056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-05-23 13:41:24.840  INFO 30056 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-23 13:41:24.841  INFO 30056 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-05-23 13:41:25.025  INFO 30056 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-23 13:41:25.026  INFO 30056 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7920 ms
+2023-05-23 13:41:27.093  INFO 30056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-05-23 13:41:27.108  INFO 30056 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 13.074 seconds (JVM running for 15.639)
+2023-05-23 13:41:31.398  INFO 30056 --- [http-nio-18950-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-23 13:41:31.399  INFO 30056 --- [http-nio-18950-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-23 13:41:31.404  INFO 30056 --- [http-nio-18950-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2023-05-23 13:41:31.453  INFO 30056 --- [http-nio-18950-exec-4] c.s.b.interceptors.JWTInterceptor        : /shop/get-ip
+2023-05-23 13:41:31.486  INFO 30056 --- [http-nio-18950-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-23 13:41:37.302  INFO 30056 --- [http-nio-18950-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-23 13:42:18.155  INFO 30056 --- [http-nio-18950-exec-1] c.s.b.interceptors.JWTInterceptor        : /shop/get-ip
+2023-05-23 13:56:29.015  INFO 30056 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-23 13:56:29.074  INFO 30056 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
