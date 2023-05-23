@@ -102,8 +102,17 @@ public class UserController {
 	}
 	
 	@PostMapping (value = "/change-pwd")
-	public boolean changePwd (@RequestParam ("username") String username, @RequestParam ("oldPassword") String oldPassword, @RequestParam ("password") String newPassword) {
-		return true;
+	public ResponseEntity<?> changePwd (@RequestParam ("username") String username, @RequestParam ("oldPassword") String oldPassword, @RequestParam ("newPassword") String newPassword) {
+		try {
+			if (userService.changePassword(username, oldPassword, newPassword))
+				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "修改成功");
+		} catch (MySecurityException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(ResponseEntity.WRONG_PASSWORD, null, "旧密码错误");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(ResponseEntity.FAILED, null, "修改失败");
 	}
 	
 	@PostMapping (value = "/set-info")

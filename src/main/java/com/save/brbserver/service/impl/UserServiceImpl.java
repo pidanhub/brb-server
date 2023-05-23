@@ -71,9 +71,16 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean changePassword (String username, String password) {
-		//TODO
-		return false;
+	public boolean changePassword (String username, String password, String newPwd) throws SQLException, MySecurityException {
+		User user = userDao.getByUsername(username);
+		if (user == null)
+			return false;
+		String encodeOldPassword = DigestUtils.md5Hex(password);
+		if (!encodeOldPassword.equals(user.getPassword())) {
+			throw new MySecurityException();
+		}
+		String encodeNewPassword = DigestUtils.md5Hex(newPwd);
+		return userDao.changePassword(user.getUserId(), encodeNewPassword);
 	}
 	
 	@Override

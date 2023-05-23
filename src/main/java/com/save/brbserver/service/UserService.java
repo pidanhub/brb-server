@@ -20,7 +20,7 @@ public interface UserService {
 	
 	void postUserHeadSculpture (String username, String path) throws SQLException;
 	
-	boolean changePassword (String username, String password) throws SQLException;
+	boolean changePassword (String username, String password, String newPwd) throws SQLException, MySecurityException;
 	
 	Long getUserIdByName (String username) throws SQLException;
 	

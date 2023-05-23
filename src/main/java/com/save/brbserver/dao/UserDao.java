@@ -63,4 +63,7 @@ public interface UserDao {
 	@Select ("select is_logged_in from users where username=#{username} or email=#{username};")
 	Boolean getUserLoginStatus (@Param ("username") String username) throws SQLException;
 	
+	@Update ("update users set password=#{new} where user_id=#{userId};")
+	boolean changePassword (@Param ("userId") Long userId, @Param ("new") String newPwd) throws SQLException;
+	
 }
