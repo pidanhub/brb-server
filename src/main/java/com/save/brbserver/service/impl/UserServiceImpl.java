@@ -120,9 +120,10 @@ public class UserServiceImpl implements UserService {
 			return bootSignInDao.startSignIn(userId, bootId);
 		}
 		Date now = new Date();
+		if (now.before(date))
+			throw new MySecurityException();
 		boolean sameDay = DateUtils.isSameDay(date, now);
-//		log.info(String.valueOf(diff));
-		if (sameDay) {
+		if (!sameDay) {
 			bootSignInDao.signInDisContinuous(userId, bootId);
 			userDao.addIntegral(userId);
 		}
