@@ -8,6 +8,7 @@ import com.save.brbserver.entity.User;
 import com.save.brbserver.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -112,20 +113,15 @@ public class UserServiceImpl implements UserService {
 			return bootSignInDao.startSignIn(userId, bootId);
 		}
 		Date now = new Date();
-		if (now.before(date))
-			throw new MySecurityException();
-		long diff = Math.abs(date.getTime() - now.getTime()) / (1000 * 3600 * 24);
+		boolean sameDay = DateUtils.isSameDay(date, now);
 //		log.info(String.valueOf(diff));
-		if (diff == 0) {
-			return false;
-		}
-		else if (diff == 1) {
-			bootSignInDao.signInContinuous(userId, bootId);
+		if (sameDay) {
+			bootSignInDao.signInDisContinuous(userId, bootId);
+			userDao.addIntegral(userId);
 		}
 		else {
-			bootSignInDao.signInDisContinuous(userId, bootId);
+			return false;
 		}
-		userDao.addIntegral(userId);
 		return true;
 	}
 	

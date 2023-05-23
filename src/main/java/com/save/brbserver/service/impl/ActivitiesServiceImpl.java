@@ -43,7 +43,13 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 	@Override
 	public List<Activity> getALLActivitiesUserHadJoined (String username) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
-		return activityDao.getALLActivitiesUserHadJoined(userId);
+		List<Activity> list = activityDao.getALLActivitiesUserHadJoined(userId);
+		Set<Long> signed = activityDao.getThoseActivitiesUserHadJoinedAndSignedInId(userId);
+		for (Activity a : list) {
+			Long id = a.getActivId();
+			a.setIsSignedIn(signed.contains(id));
+		}
+		return list;
 	}
 	
 	@Override
@@ -58,7 +64,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 				.activLocation(location)
 				.startTime(startTime)
 				.isSignedUp(true)
-				.isSigndedIn(false)
+				.isSignedIn(false)
 				.build();
 		activityDao.addActivity(activity);
 		activityDao.oneSignINActivity(userId, activity.getActivId()); //同时参加
@@ -85,7 +91,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 		for (Activity a : list) {
 			Long id = a.getActivId();
 			a.setIsSignedUp(joined.contains(id));
-			a.setIsSigndedIn(signed.contains(id));
+			a.setIsSignedIn(signed.contains(id));
 		}
 		return list;
 	}

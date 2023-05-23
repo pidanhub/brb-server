@@ -1,6 +1,5 @@
 package com.save.brbserver.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 /**
@@ -15,7 +14,6 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-@JsonInclude (JsonInclude.Include.NON_NULL)
 public class ItHouseIP {
 	private Integer ipId;
 	private Integer ipType;

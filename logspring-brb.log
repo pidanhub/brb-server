@@ -302,3 +302,27 @@ java.sql.SQLSyntaxErrorException: Unknown column 'u_id' in 'where clause'
 2023-05-23 00:50:23.037  INFO 83616 --- [Thread-1] c.s.b.s.impl.ActivitiesServiceImpl       : [1, 2, 8, 10, 11]
 2023-05-23 00:50:30.473  INFO 83616 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-05-23 00:50:30.487  INFO 83616 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-23 10:54:22.181  INFO 78732 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 78732 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-05-23 10:54:22.192  INFO 78732 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-05-23 10:54:22.971  INFO 78732 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-23 10:54:22.974  INFO 78732 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-23 10:54:23.014  INFO 78732 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2023-05-23 10:54:23.311  INFO 78732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$57186c2b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-23 10:54:23.383  INFO 78732 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-05-23 10:54:24.574  INFO 78732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-05-23 10:54:24.588  INFO 78732 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-23 10:54:24.588  INFO 78732 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-05-23 10:54:24.724  INFO 78732 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-23 10:54:24.724  INFO 78732 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2473 ms
+2023-05-23 10:54:25.853  INFO 78732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-05-23 10:54:25.866  INFO 78732 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 4.187 seconds (JVM running for 4.604)
+2023-05-23 10:54:37.250  INFO 78732 --- [http-nio-18950-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-23 10:54:37.250  INFO 78732 --- [http-nio-18950-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-23 10:54:37.253  INFO 78732 --- [http-nio-18950-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-05-23 10:54:37.290  INFO 78732 --- [http-nio-18950-exec-1] c.s.b.interceptors.JWTInterceptor        : /activity/get-sign-in
+2023-05-23 10:54:37.310  INFO 78732 --- [http-nio-18950-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-23 10:54:37.981  INFO 78732 --- [http-nio-18950-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-23 10:55:44.725  INFO 78732 --- [http-nio-18950-exec-7] c.s.b.interceptors.JWTInterceptor        : /activity/get-joined
+2023-05-23 10:56:54.007  INFO 78732 --- [http-nio-18950-exec-5] c.s.b.interceptors.JWTInterceptor        : /activity/get-all
+2023-05-23 11:02:52.119  INFO 78732 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-23 11:02:52.128  INFO 78732 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

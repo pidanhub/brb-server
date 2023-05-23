@@ -37,6 +37,6 @@ public class Activity {
 	@JsonInclude (JsonInclude.Include.NON_NULL)
 	private Boolean isSignedUp;
 	@JsonInclude (JsonInclude.Include.NON_NULL)
-	private Boolean isSigndedIn;
+	private Boolean isSignedIn;
 	
 }
