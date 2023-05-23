@@ -93,10 +93,15 @@ public class UserServiceImpl implements UserService {
 		Long userId = userDao.getUserIdByName(username);
 		Map<String, Object> map = userDao.getSimpleUserInfo(userId);
 		map.put("momentsCount", userDao.countUserMoments(userId));
-		map.put("favoriteCount", userDao.countUserFavorite(userId));
-		map.put("signInCount", bootSignInDao.getSignInCount(userId, 1));
-		map.put("signInMaxCount", bootSignInDao.getMaxSignInCount(userId, 1));
-		map.put("totalSignInCount", bootSignInDao.getTotalSignInCount(userId, 1));
+		Integer countUserFavorite = userDao.countUserFavorite(userId);
+		map.put("favoriteCount", countUserFavorite == null ? 0 : countUserFavorite);
+		Integer signInCount = bootSignInDao.getSignInCount(userId, 1);
+		map.put("signInCount", signInCount == null ? 0 : signInCount);
+		Integer signInMaxCount = bootSignInDao.getMaxSignInCount(userId, 1);
+		map.put("signInMaxCount", signInMaxCount == null ? 0 : signInMaxCount);
+		Integer totalSignInCount = bootSignInDao.getTotalSignInCount(userId, 1);
+		map.put("totalSignInCount", totalSignInCount == null ? 0 : totalSignInCount);
+		
 		return map;
 	}
 	
@@ -120,16 +125,23 @@ public class UserServiceImpl implements UserService {
 			return bootSignInDao.startSignIn(userId, bootId);
 		}
 		Date now = new Date();
+		long time = Math.abs(now.getTime() - date.getTime()) / (24 * 60 * 60 * 1000L);
 		if (now.before(date))
 			throw new MySecurityException();
 		boolean sameDay = DateUtils.isSameDay(date, now);
-		if (!sameDay) {
-			bootSignInDao.signInDisContinuous(userId, bootId);
-			userDao.addIntegral(userId);
-		}
-		else {
+		if (sameDay) {
+			// 是同一天，所以不给签到
 			return false;
 		}
+		else if (time <= 1) {
+			// 是两个日期，如果考虑最长，即第一天的头和第二天的尾，时间应该相差将近两天，不可能到二，time一定小于等于1，可以签到且为连续签到
+			bootSignInDao.signInContinuous(userId, bootId);
+		}
+		else {
+			// 超出了，已经不连续了，可以签到，但是需要清空为1
+			bootSignInDao.signInDisContinuous(userId, bootId);
+		}
+		userDao.addIntegral(userId);
 		return true;
 	}
 	
