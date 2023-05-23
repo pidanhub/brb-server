@@ -33,6 +33,10 @@ spring:
     port: 6379
     password: zzsroot666!
     timeout: 10000
+  servlet:
+    multipart:
+      max-request-size: 20MB
+      max-file-size: 20MB
 
 mybatis:
   type-aliases-package: com.save.brbserver.entity
