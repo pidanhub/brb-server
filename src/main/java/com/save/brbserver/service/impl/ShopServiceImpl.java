@@ -38,8 +38,7 @@ public class ShopServiceImpl implements ShopService {
 			Set<Integer> set = shopDao.findUserFavorites(userDao.getUserIdByName(username));
 			if (set.size() != 0)
 				for (ItHouseIP ip : list)
-					if (set.contains(ip.getIpId()))
-						ip.setIsFavorite(true);
+					ip.setIsFavorite(set.contains(ip.getIpId()));
 		}
 		return list;
 	}
@@ -56,8 +55,7 @@ public class ShopServiceImpl implements ShopService {
 			Set<Integer> favorites = shopDao.findUserFavorites(userDao.getUserIdByName(username));
 			if (favorites.size() != 0)
 				for (ItHouseIP ip : set)
-					if (favorites.contains(ip.getIpId()))
-						ip.setIsFavorite(true);
+					ip.setIsFavorite(favorites.contains(ip.getIpId()));
 		}
 		return set;
 	}
