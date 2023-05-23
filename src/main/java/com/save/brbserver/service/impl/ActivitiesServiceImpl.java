@@ -126,7 +126,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 				for (Long i : toSet)
 					sb.append(",").append(i.toString());
 				try {
-					log.info(toSet.toString());
+//					log.info(toSet.toString());
 					activityDao.setEnd(sb.toString());
 				} catch (Exception e) {
 					e.printStackTrace();

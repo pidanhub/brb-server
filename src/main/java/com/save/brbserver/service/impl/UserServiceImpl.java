@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 		userDao.userLoginUpdateTime(usernameOrEmail);
 		String up = user.getPassword();
 		String encodePassword = DigestUtils.md5Hex(password);
-		log.info(encodePassword);
+//		log.info(encodePassword);
 		if (encodePassword.equals(up)) {
 			return map;
 		}

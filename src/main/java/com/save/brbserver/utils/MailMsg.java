@@ -156,8 +156,8 @@ public class MailMsg {
 		//发给谁-邮箱地址
 		helper.setTo(email);
 		//谁发的-发送人邮箱
-		helper.setFrom("2476594519@qq.com");
-		//将邮箱验证码以邮件地址为key存入redis,5分钟过期
+		helper.setFrom("BRB蜘蛛侠" + '<' + "2476594519@qq.com" + '>');
+		//将邮箱验证码以邮件地址为key存入redis,1分钟过期
 		redisTemplate.opsForValue().set(email, code, Duration.ofMinutes(1)); //redis
 		mailSender.send(mimeMessage);
 		return true;
