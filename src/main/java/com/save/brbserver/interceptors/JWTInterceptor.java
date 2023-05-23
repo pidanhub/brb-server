@@ -108,7 +108,7 @@ public class JWTInterceptor implements HandlerInterceptor {
 	        map.put("code", ResponseEntity.NETWORK_UNREACHABLE);
 	        map.put("message", "目标网络不可达（本地测试）");
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             map.put("code", ResponseEntity.METHOD_NOT_ALLOW);
 	        map.put("message", "方法不允许");
         }
