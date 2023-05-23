@@ -136,9 +136,9 @@ public class UserController {
 	}
 	
 	@PostMapping ("/boot-sign-in")
-	public ResponseEntity<?> signIn (@RequestParam ("username") String username) {
+	public ResponseEntity<?> signIn (@RequestParam ("username") String username, @RequestParam ("id") int id) {
 		try {
-			if (userService.signInBoot(username, 1))
+			if (userService.signInBoot(username, id))
 				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "签到成功");
 			else
 				return new ResponseEntity<>(ResponseEntity.SIGN_IN_LESS_THAN_ONE_DAY, null, "不能一天内签到多次");
