@@ -22,7 +22,7 @@ public interface ShopDao {
 	@Select ("select * from ips i, ip_in_type iit where type_id=#{ipType} and i.ip_id=iit.ip_id;")
 	List<ItHouseIP> selectAllIPsOfCurrentPrefecture (@Param ("ipType") int type) throws SQLException;
 	
-	@Select ("select * from ips where name REGEXP BINARY #{name}")
+	@Select ("select * from ips where name REGEXP #{name}")
 	List<ItHouseIP> selectOneIPByName (@Param ("name") String name) throws SQLException;
 	
 	@Insert ("insert into user_ip_favorite(user_id, ip_id) values(#{userId}, #{ipId});")
