@@ -76,7 +76,6 @@ public interface MomentsDao {
 	boolean dislikeCount (@Param ("m") Long id) throws SQLException;
 	
 	@Insert ("insert into moments_comments(user_id, moment_id, content) values(#{u}, #{m}, #{content});")
-	@Options (useGeneratedKeys = true, keyProperty = "comment_id", keyColumn = "comment_id")
 	void postComment (@Param ("u") Long userId, @Param ("m") Long id, @Param ("content") String content) throws SQLException;
 	
 	
