@@ -111,7 +111,8 @@ public class MomentsServiceImpl implements MomentsService {
 		List<Comments> list = momentsDao.getCommentsDetails(id, limit, min);
 		if (list == null)
 			list = new ArrayList<>();
-		return Moments.builder().id(id).isLiked(false).pictures(maps).comments(list).build();
+		Integer count = momentsDao.getCommentCount(id);
+		return Moments.builder().id(id).isLiked(false).pictures(maps).commentsCount(count).comments(list).build();
 	}
 	
 	@Override

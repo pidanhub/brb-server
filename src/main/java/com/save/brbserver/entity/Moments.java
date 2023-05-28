@@ -34,6 +34,8 @@ public class Moments {
 	@JsonInclude (JsonInclude.Include.NON_NULL)
 	private List<Picture> pictures;
 	@JsonInclude (JsonInclude.Include.NON_NULL)
+	private Integer commentsCount;
+	@JsonInclude (JsonInclude.Include.NON_NULL)
 	private List<Comments> comments;
 	
 }

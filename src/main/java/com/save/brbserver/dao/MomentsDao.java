@@ -41,6 +41,9 @@ public interface MomentsDao {
 	@Select ("select photo_num, storage_path from moments_images where moment_id = #{id};")
 	List<Picture> getImagesDetails (@Param ("id") Long id) throws SQLException;
 	
+	@Select ("select count(*) from moments_comments where moment_id=#{id};")
+	Integer getCommentCount (@Param ("id") Long id) throws SQLException;
+	
 	@Select ("select comment_id, moment_id, content, post_time, nickname, head_sculpture_path as user_head_path " +
 			"from moments_comments, users " +
 			"where moments_comments.user_id = users.user_id and moment_id = #{id} " +
