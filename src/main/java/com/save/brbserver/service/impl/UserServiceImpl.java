@@ -46,11 +46,11 @@ public class UserServiceImpl implements UserService {
 		map.put("e-mail", user.getEmail());
 		map.put("introduction", user.getIntroduction());
 		map.put("head-sculpture-path", user.getHeadSculpturePath());
-		userDao.userLoginUpdateTime(usernameOrEmail);
 		String up = user.getPassword();
 		String encodePassword = DigestUtils.md5Hex(password);
 //		log.info(encodePassword);
 		if (encodePassword.equals(up)) {
+			userDao.userLoginUpdateTime(usernameOrEmail);
 			return map;
 		}
 		else

@@ -1,11 +1,12 @@
 package com.save.brbserver.dao;
 
+import com.save.brbserver.entity.Comments;
 import com.save.brbserver.entity.Moments;
+import com.save.brbserver.entity.Picture;
 import org.apache.ibatis.annotations.*;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -29,7 +30,7 @@ public interface MomentsDao {
 	@Update ("update moments set cover_path=#{path} where id=#{id};")
 	boolean setCover (@Param ("id") Long id, @Param ("path") String path) throws SQLException;
 	
-	//按时间先后排序，返回后发布的20个
+	//按时间先后排序，返回后发布的10个
 	@Select ("select id, content, post_time, cover_path, `like`, nickname, head_sculpture_path as user_head_path " +
 			"from moments, users " +
 			"where moments.user_id = users.user_id " +
@@ -38,7 +39,14 @@ public interface MomentsDao {
 	List<Moments> getMomentsList (@Param ("limit") int limit, @Param ("offset") Long offset) throws SQLException;
 	
 	@Select ("select photo_num, storage_path from moments_images where moment_id = #{id};")
-	Map<Integer, String> getDetails (@Param ("id") Long id) throws SQLException;
+	List<Picture> getImagesDetails (@Param ("id") Long id) throws SQLException;
+	
+	@Select ("select comment_id, moment_id, content, post_time, nickname, head_sculpture_path as user_head_path " +
+			"from moments_comments, users " +
+			"where moments_comments.user_id = users.user_id and moment_id = #{id} " +
+			"order by post_time desc " +
+			"limit #{limit} offset #{offset};")
+	List<Comments> getCommentsDetails (@Param ("id") Long momentId, @Param ("limit") int limit, @Param ("offset") Long offset) throws SQLException;
 	
 	@Select ("select user_id from moments where id=#{id};")
 	Long getMomentUserId (@Param ("id") Long id) throws SQLException;
@@ -63,5 +71,10 @@ public interface MomentsDao {
 	
 	@Update ("update moments set `like` = `like` - 1 where id = #{m};")
 	boolean dislikeCount (@Param ("m") Long id) throws SQLException;
+	
+	@Insert ("insert into moments_comments(user_id, moment_id, content) values(#{u}, #{m}, #{content});")
+	@Options (useGeneratedKeys = true, keyProperty = "comment_id", keyColumn = "comment_id")
+	void postComment (@Param ("u") Long userId, @Param ("m") Long id, @Param ("content") String content) throws SQLException;
+	
 	
 }

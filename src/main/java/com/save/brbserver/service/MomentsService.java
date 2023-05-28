@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author:Zzs
@@ -31,5 +30,8 @@ public interface MomentsService {
 	
 	boolean dislike (String username, Long id) throws SQLException;
 	
-	Map<Integer, String> details (Long id) throws SQLException;
+	Moments details (Long id, int page) throws Exception;
+	
+	void postComment (String username, Long momentId, String comments) throws SQLException;
+	
 }

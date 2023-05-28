@@ -3,7 +3,9 @@ package com.save.brbserver.service.impl;
 import com.save.brbserver.customexception.MySecurityException;
 import com.save.brbserver.dao.MomentsDao;
 import com.save.brbserver.dao.UserDao;
+import com.save.brbserver.entity.Comments;
 import com.save.brbserver.entity.Moments;
+import com.save.brbserver.entity.Picture;
 import com.save.brbserver.service.MomentsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -29,6 +31,7 @@ public class MomentsServiceImpl implements MomentsService {
 	private MomentsDao momentsDao;
 	@Autowired
 	private UserDao userDao;
+	private final int limit = 10;
 	
 	@Override
 	@Transactional (rollbackFor = Exception.class)
@@ -62,7 +65,6 @@ public class MomentsServiceImpl implements MomentsService {
 	@Override
 	public List<Moments> getAllMoments (String username, int page) throws SQLException {
 		//目前的获取方法中，只有一张封面图，另获取发布者名字和发布者头像路径
-		int limit = 10;
 		Long min = (long) limit * page;
 		List<Moments> list = momentsDao.getMomentsList(limit, min);
 		if (list.size() != 0) {
@@ -100,8 +102,23 @@ public class MomentsServiceImpl implements MomentsService {
 	}
 	
 	@Override
-	public Map<Integer, String> details (Long id) throws SQLException {
-		return momentsDao.getDetails(id);
+	@Transactional (rollbackFor = Exception.class)
+	public Moments details (Long id, int page) throws Exception {
+		Long min = (long) limit * page;
+		List<Picture> maps = momentsDao.getImagesDetails(id);
+		if (maps == null)
+			maps = new ArrayList<>();
+		List<Comments> list = momentsDao.getCommentsDetails(id, limit, min);
+		if (list == null)
+			list = new ArrayList<>();
+		return Moments.builder().id(id).isLiked(false).pictures(maps).comments(list).build();
+	}
+	
+	@Override
+	@Transactional (rollbackFor = Exception.class)
+	public void postComment (String username, Long momentId, String comments) throws SQLException {
+		Long uId = userDao.getUserIdByName(username);
+		momentsDao.postComment(uId, momentId, comments);
 	}
 	
 }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.sql.Timestamp;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @Author:Zzs
@@ -32,6 +32,8 @@ public class Moments {
 	private String nickname; //1
 	private String userHeadPath; //1
 	@JsonInclude (JsonInclude.Include.NON_NULL)
-	private Set<String> pictures;
+	private List<Picture> pictures;
+	@JsonInclude (JsonInclude.Include.NON_NULL)
+	private List<Comments> comments;
 	
 }
