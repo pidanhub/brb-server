@@ -92,14 +92,15 @@ public class UserServiceImpl implements UserService {
 	public Map<String, Object> getSimpleUserInfo (String username) throws SQLException {
 		Long userId = userDao.getUserIdByName(username);
 		Map<String, Object> map = userDao.getSimpleUserInfo(userId);
+		int boot_id = 3;
 		map.put("momentsCount", userDao.countUserMoments(userId));
 		Integer countUserFavorite = userDao.countUserFavorite(userId);
 		map.put("favoriteCount", countUserFavorite == null ? 0 : countUserFavorite);
-		Integer signInCount = bootSignInDao.getSignInCount(userId, 1);
+		Integer signInCount = bootSignInDao.getSignInCount(userId, boot_id);
 		map.put("signInCount", signInCount == null ? 0 : signInCount);
-		Integer signInMaxCount = bootSignInDao.getMaxSignInCount(userId, 1);
+		Integer signInMaxCount = bootSignInDao.getMaxSignInCount(userId, boot_id);
 		map.put("signInMaxCount", signInMaxCount == null ? 0 : signInMaxCount);
-		Integer totalSignInCount = bootSignInDao.getTotalSignInCount(userId, 1);
+		Integer totalSignInCount = bootSignInDao.getTotalSignInCount(userId, boot_id);
 		map.put("totalSignInCount", totalSignInCount == null ? 0 : totalSignInCount);
 		
 		return map;
