@@ -20,8 +20,11 @@ import java.util.Set;
 @Mapper
 public interface MomentsDao {
 	
-	@Insert ("insert into moments_images values (#{momentId}, #{picId}, #{path});")
+	@Insert ("insert into moments_images(moment_id, photo_num, storage_path) values (#{momentId}, #{picId}, #{path});")
 	boolean setImages (@Param ("momentId") Long id1, @Param ("picId") Integer id2, @Param ("path") String path) throws SQLException;
+	
+	@Insert ("update moments_images set origin_storage_path=#{path} where moment_id=#{id1} and photo_num=#{id2};")
+	boolean setOriginImages (@Param ("id1") Long momentId, @Param ("id2") Integer picId, @Param ("path") String path);
 	
 	@Insert ("insert into moments(user_id, content, post_time) values(#{userId}, #{content}, now());")
 	@Options (useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
@@ -77,6 +80,5 @@ public interface MomentsDao {
 	
 	@Insert ("insert into moments_comments(user_id, moment_id, content) values(#{u}, #{m}, #{content});")
 	void postComment (@Param ("u") Long userId, @Param ("m") Long id, @Param ("content") String content) throws SQLException;
-	
 	
 }

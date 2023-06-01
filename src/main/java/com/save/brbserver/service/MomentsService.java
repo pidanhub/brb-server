@@ -18,6 +18,8 @@ public interface MomentsService {
 	
 	boolean setImages (Long momentId, Integer picId, String path) throws SQLException;
 	
+	boolean setOriginImages (Long momentId, Integer picId, String path) throws SQLException;
+	
 	boolean setCover (Long id, String path) throws SQLException;
 	
 	Long postMoments (String username, String text) throws SQLException;
