@@ -24,7 +24,7 @@ public interface MomentsDao {
 	boolean setImages (@Param ("momentId") Long id1, @Param ("picId") Integer id2, @Param ("path") String path) throws SQLException;
 	
 	@Insert ("update moments_images set origin_storage_path=#{path} where moment_id=#{id1} and photo_num=#{id2};")
-	boolean setOriginImages (@Param ("id1") Long momentId, @Param ("id2") Integer picId, @Param ("path") String path);
+	boolean setOriginImages (@Param ("id1") Long momentId, @Param ("id2") Integer picId, @Param ("path") String path) throws SQLException;
 	
 	@Insert ("insert into moments(user_id, content, post_time) values(#{userId}, #{content}, now());")
 	@Options (useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")

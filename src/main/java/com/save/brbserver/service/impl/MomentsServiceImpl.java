@@ -45,10 +45,7 @@ public class MomentsServiceImpl implements MomentsService {
 	
 	@Override
 	public boolean setOriginImages (Long momentId, Integer picId, String path) throws SQLException {
-		if (picId == 1)
-			return momentsDao.setOriginImages(momentId, picId, path) && setCover(momentId, path);
-		else
-			return momentsDao.setOriginImages(momentId, picId, path);
+		return momentsDao.setOriginImages(momentId, picId, path);
 	}
 	
 	@Override
