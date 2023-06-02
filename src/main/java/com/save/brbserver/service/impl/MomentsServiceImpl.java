@@ -75,7 +75,7 @@ public class MomentsServiceImpl implements MomentsService {
 		if (list.size() != 0) {
 			Set<Long> set = momentsDao.findLikesBetweenRange(userDao.getUserIdByName(username),
 					list.get(list.size() - 1).getId(), list.get(0).getId());
-			log.info(set.toString());
+//			log.info(set.toString());
 			if (set.size() != 0)
 				for (Moments m : list)
 					if (set.contains(m.getId()))

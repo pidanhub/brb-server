@@ -4,6 +4,7 @@ import com.save.brbserver.config.ConstantFields;
 import com.save.brbserver.entity.ResponseEntity;
 import com.save.brbserver.service.MomentsService;
 import com.save.brbserver.service.UserService;
+import net.coobird.thumbnailator.Thumbnails;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,7 @@ import java.util.UUID;
 @RequestMapping ("/file")
 public class FileController {
 	
+	private static final String SUFFIX = "-thumbnail";
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -48,17 +50,25 @@ public class FileController {
 			StringBuilder newFileName = new StringBuilder(fileNameHeadToUniqueOneUser);
 			for (String s : tss)
 				newFileName.append(s);
-			newFileName.append("_").append(UUID.randomUUID().toString().substring(0, 10)).append(".").append(originalFileName);
+			newFileName.append("_").append(UUID.randomUUID().toString().substring(0, 10));
 			String s = ConstantFields.HEAD_PATH + "/" + tss[0] + tss[1] + tss[2];
 			File dir = new File(ConstantFields.getImagePath() + s);
 			if (!dir.exists())
 				dir.mkdirs();
-			File targetFile = new File(ConstantFields.getImagePath() + s, newFileName.toString());
+			File targetFile = new File(ConstantFields.getImagePath() + s, newFileName.toString() + "." + originalFileName);
 			FileOutputStream out = new FileOutputStream(targetFile);
 			IOUtils.copy(in, out);
 			out.close();
 			in.close();
-			userService.postUserHeadSculpture(username, s + newFileName);
+			String thumbnailDir = ConstantFields.HEAD_PATH + SUFFIX + "/"
+					+ tss[0] + tss[1] + tss[2];
+			dir = new File(ConstantFields.getImagePath() + thumbnailDir);
+			if (!dir.exists())
+				dir.mkdirs();
+			String thumbnailPath = thumbnailDir + newFileName.toString() + SUFFIX + "." + originalFileName;
+			Thumbnails.of(targetFile).scale(0.8f).outputQuality(0.5f)
+					.toOutputStream(new FileOutputStream(ConstantFields.getImagePath() + thumbnailPath));
+			userService.postUserHeadSculpture(username, thumbnailPath);
 			return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "上传成功");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -74,6 +84,7 @@ public class FileController {
 	                                           @RequestParam ("file") MultipartFile file) {
 		try {
 			InputStream in = file.getInputStream();
+			
 			String timeStamp = ConstantFields.dateToString(new Date());
 			String[] tss = timeStamp.split("[:\\s-]");
 			String messageOnPictures = "/" + id1 + "_" + id2 + "_";
@@ -81,17 +92,30 @@ public class FileController {
 			StringBuilder newFileName = new StringBuilder(messageOnPictures);
 			for (String s : tss)
 				newFileName.append(s);
-			newFileName.append("_").append(UUID.randomUUID().toString().substring(0, 10)).append(".").append(originalFileName);
+			newFileName.append("_").append(UUID.randomUUID().toString().substring(0, 10));
 			String s = ConstantFields.MOMENTS_PATH + "/" + tss[0] + tss[1] + tss[2];
 			File dir = new File(ConstantFields.getImagePath() + s);
 			if (!dir.exists())
 				dir.mkdirs();
-			File targetFile = new File(ConstantFields.getImagePath() + s, newFileName.toString());
+			
+			File targetFile = new File(ConstantFields.getImagePath() + s,
+					newFileName.toString() + "." + originalFileName);
 			FileOutputStream out = new FileOutputStream(targetFile);
 			IOUtils.copy(in, out);
 			out.close();
 			in.close();
-			if (momentsService.setImages(id1, id2, s + newFileName))
+			
+			String thumbnailDir = ConstantFields.MOMENTS_PATH + SUFFIX + "/"
+					+ tss[0] + tss[1] + tss[2];
+			dir = new File(ConstantFields.getImagePath() + thumbnailDir);
+			if (!dir.exists())
+				dir.mkdirs();
+			String thumbnailPath = thumbnailDir + newFileName.toString() + SUFFIX + "." + originalFileName;
+			Thumbnails.of(targetFile).scale(0.8f).outputQuality(0.5f)
+					.toOutputStream(new FileOutputStream(ConstantFields.getImagePath() + thumbnailPath));
+			boolean success = momentsService.setImages(id1, id2, thumbnailPath)
+					&& momentsService.setOriginImages(id1, id2, s + newFileName + "." + originalFileName);
+			if (success)
 				return new ResponseEntity<>(ResponseEntity.SUCCESS, null, "上传成功");
 			else
 				return new ResponseEntity<>(ResponseEntity.FAILED, null, "上传失败");
