@@ -31,7 +31,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    password: zzsroot666!
+    password: zzsroot666! #上传取消密码
     timeout: 10000
   servlet:
     multipart:
