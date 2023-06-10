@@ -19,7 +19,7 @@ public interface ActivitiesService {
 	
 	Long addActivity (String username, String organizationName, String name, String info, Timestamp startTime, String location) throws SQLException;
 	
-	boolean signUpActivity (String username, Long aId) throws SQLException;
+	int signUpActivity (String username, Long aId) throws SQLException;
 	
 	boolean signInActivity (String username, Long aId) throws SQLException;
 	

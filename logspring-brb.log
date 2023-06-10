@@ -1,56 +1,111 @@
-2023-06-02 02:04:33.697  INFO 109792 --- [main] c.s.b.controller.FileControllerTest      : Starting FileControllerTest using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 109792 (started by HP in E:\BRB\brbserver)
-2023-06-02 02:04:33.706  INFO 109792 --- [main] c.s.b.controller.FileControllerTest      : No active profile set, falling back to 1 default profile: "default"
-2023-06-02 02:04:34.461  INFO 109792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-02 02:04:34.464  INFO 109792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-06-02 02:04:34.487  INFO 109792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
-2023-06-02 02:04:34.748  INFO 109792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$58eeceb1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-06-02 02:04:34.812  INFO 109792 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2023-06-02 02:04:35.679  INFO 109792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2023-06-02 02:04:35.688  INFO 109792 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-06-02 02:04:35.688  INFO 109792 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2023-06-02 02:04:35.812  INFO 109792 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-06-02 02:04:35.812  INFO 109792 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2042 ms
-2023-06-02 02:04:37.091  INFO 109792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 63699 (http) with context path ''
-2023-06-02 02:04:37.100  INFO 109792 --- [main] c.s.b.controller.FileControllerTest      : Started FileControllerTest in 3.956 seconds (JVM running for 5.254)
-2023-06-02 02:06:39.006  INFO 118196 --- [main] c.s.b.controller.FileControllerTest      : Starting FileControllerTest using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 118196 (started by HP in E:\BRB\brbserver)
-2023-06-02 02:06:39.008  INFO 118196 --- [main] c.s.b.controller.FileControllerTest      : No active profile set, falling back to 1 default profile: "default"
-2023-06-02 02:06:39.849  INFO 118196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-02 02:06:39.852  INFO 118196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-06-02 02:06:39.874  INFO 118196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2023-06-02 02:06:40.120  INFO 118196 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$b8a2752f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-06-02 02:06:40.179  INFO 118196 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2023-06-02 02:06:41.072  INFO 118196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2023-06-02 02:06:41.085  INFO 118196 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-06-02 02:06:41.086  INFO 118196 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2023-06-02 02:06:41.221  INFO 118196 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-06-02 02:06:41.222  INFO 118196 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2185 ms
-2023-06-02 02:06:42.725  INFO 118196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 56650 (http) with context path ''
-2023-06-02 02:06:42.737  INFO 118196 --- [main] c.s.b.controller.FileControllerTest      : Started FileControllerTest in 4.241 seconds (JVM running for 5.285)
-2023-06-02 02:07:21.297  INFO 107276 --- [main] c.s.b.controller.FileControllerTest      : Starting FileControllerTest using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 107276 (started by HP in E:\BRB\brbserver)
-2023-06-02 02:07:21.298  INFO 107276 --- [main] c.s.b.controller.FileControllerTest      : No active profile set, falling back to 1 default profile: "default"
-2023-06-02 02:07:22.122  INFO 107276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-02 02:07:22.125  INFO 107276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-06-02 02:07:22.157  INFO 107276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
-2023-06-02 02:07:22.469  INFO 107276 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$4901a04b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-06-02 02:07:22.511  INFO 107276 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2023-06-02 02:07:23.322  INFO 107276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2023-06-02 02:07:23.336  INFO 107276 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-06-02 02:07:23.337  INFO 107276 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2023-06-02 02:07:23.453  INFO 107276 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-06-02 02:07:23.454  INFO 107276 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2130 ms
-2023-06-02 02:07:24.843  INFO 107276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 56779 (http) with context path ''
-2023-06-02 02:07:24.852  INFO 107276 --- [main] c.s.b.controller.FileControllerTest      : Started FileControllerTest in 4.028 seconds (JVM running for 5.33)
-2023-06-02 02:08:59.883  INFO 105744 --- [main] c.s.b.controller.FileControllerTest      : Starting FileControllerTest using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 105744 (started by HP in E:\BRB\brbserver)
-2023-06-02 02:08:59.885  INFO 105744 --- [main] c.s.b.controller.FileControllerTest      : No active profile set, falling back to 1 default profile: "default"
-2023-06-02 02:09:00.680  INFO 105744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-02 02:09:00.682  INFO 105744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-06-02 02:09:00.703  INFO 105744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
-2023-06-02 02:09:00.980  INFO 105744 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$18a1fcbc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-06-02 02:09:01.041  INFO 105744 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2023-06-02 02:09:01.866  INFO 105744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2023-06-02 02:09:01.875  INFO 105744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-06-02 02:09:01.876  INFO 105744 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2023-06-02 02:09:01.999  INFO 105744 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-06-02 02:09:01.999  INFO 105744 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2042 ms
-2023-06-02 02:09:03.422  INFO 105744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 59889 (http) with context path ''
-2023-06-02 02:09:03.432  INFO 105744 --- [main] c.s.b.controller.FileControllerTest      : Started FileControllerTest in 4.11 seconds (JVM running for 5.261)
+2023-06-10 22:37:51.351  INFO 5100 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 5100 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-06-10 22:37:51.470  INFO 5100 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-06-10 22:37:55.605  INFO 5100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-10 22:37:55.610  INFO 5100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-10 22:37:55.744  INFO 5100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 0 Redis repository interfaces.
+2023-06-10 22:37:56.400  INFO 5100 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$b68a4167] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-10 22:37:56.495  INFO 5100 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-06-10 22:37:58.379  INFO 5100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-06-10 22:37:58.404  INFO 5100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-10 22:37:58.404  INFO 5100 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-10 22:37:58.693  INFO 5100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-10 22:37:58.693  INFO 5100 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6859 ms
+2023-06-10 22:38:01.293  INFO 5100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-06-10 22:38:01.319  INFO 5100 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 11.063 seconds (JVM running for 12.377)
+2023-06-10 22:38:22.096  INFO 5100 --- [http-nio-18950-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-10 22:38:22.097  INFO 5100 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-10 22:38:22.107  INFO 5100 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2023-06-10 22:38:22.149  INFO 5100 --- [http-nio-18950-exec-2] c.s.b.interceptors.JWTInterceptor        : /activity/joined-end
+2023-06-10 22:38:22.190  INFO 5100 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-10 22:38:22.857  INFO 5100 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-10 22:40:55.446  INFO 5100 --- [http-nio-18950-exec-5] c.s.b.interceptors.JWTInterceptor        : /activity/joined-end
+2023-06-10 22:50:10.754  INFO 5100 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-10 22:50:10.765  INFO 5100 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-10 22:50:19.941  INFO 10836 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 10836 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-06-10 22:50:19.946  INFO 10836 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-06-10 22:50:22.449  INFO 10836 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-10 22:50:22.451  INFO 10836 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-10 22:50:22.480  INFO 10836 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2023-06-10 22:50:22.931  INFO 10836 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$1608181f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-10 22:50:22.997  INFO 10836 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-06-10 22:50:24.067  INFO 10836 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-06-10 22:50:24.085  INFO 10836 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-10 22:50:24.086  INFO 10836 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-10 22:50:24.268  INFO 10836 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-10 22:50:24.269  INFO 10836 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3871 ms
+2023-06-10 22:50:26.101  INFO 10836 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-06-10 22:50:26.118  INFO 10836 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 7.375 seconds (JVM running for 8.93)
+2023-06-10 22:51:31.265  INFO 10836 --- [http-nio-18950-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-10 22:51:31.266  INFO 10836 --- [http-nio-18950-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-10 22:51:31.281  INFO 10836 --- [http-nio-18950-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2023-06-10 22:51:31.338  INFO 10836 --- [http-nio-18950-exec-4] c.s.b.interceptors.JWTInterceptor        : /activity/joined-end
+2023-06-10 22:51:31.362  INFO 10836 --- [http-nio-18950-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-10 22:51:32.197  INFO 10836 --- [http-nio-18950-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-10 22:54:17.735  INFO 10836 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-10 22:54:17.774  INFO 10836 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-10 22:54:26.578  INFO 22364 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 22364 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-06-10 22:54:26.584  INFO 22364 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-06-10 22:54:29.205  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-10 22:54:29.208  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-10 22:54:29.276  INFO 22364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 0 Redis repository interfaces.
+2023-06-10 22:54:29.766  INFO 22364 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$dd11606b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-10 22:54:29.829  INFO 22364 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-06-10 22:54:30.894  INFO 22364 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-06-10 22:54:30.919  INFO 22364 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-10 22:54:30.920  INFO 22364 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-10 22:54:31.087  INFO 22364 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-10 22:54:31.088  INFO 22364 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3974 ms
+2023-06-10 22:54:32.906  INFO 22364 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-06-10 22:54:32.921  INFO 22364 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 7.438 seconds (JVM running for 8.914)
+2023-06-10 22:54:38.191  INFO 22364 --- [http-nio-18950-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-10 22:54:38.192  INFO 22364 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-10 22:54:38.201  INFO 22364 --- [http-nio-18950-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2023-06-10 22:54:38.284  INFO 22364 --- [http-nio-18950-exec-2] c.s.b.interceptors.JWTInterceptor        : /activity/joined-end
+2023-06-10 22:54:38.320  INFO 22364 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-10 22:54:39.134  INFO 22364 --- [http-nio-18950-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-10 22:55:32.953  INFO 22364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-10 22:55:33.018  INFO 22364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-10 22:55:41.639  INFO 24396 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 24396 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-06-10 22:55:41.659  INFO 24396 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-06-10 22:55:44.387  INFO 24396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-10 22:55:44.390  INFO 24396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-10 22:55:44.441  INFO 24396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2023-06-10 22:55:44.813  INFO 24396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$81362bfa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-10 22:55:44.856  INFO 24396 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-06-10 22:55:46.126  INFO 24396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-06-10 22:55:46.145  INFO 24396 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-10 22:55:46.146  INFO 24396 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-10 22:55:46.342  INFO 24396 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-10 22:55:46.343  INFO 24396 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4348 ms
+2023-06-10 22:55:48.552  INFO 24396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-06-10 22:55:48.609  INFO 24396 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 8.204 seconds (JVM running for 9.475)
+2023-06-10 22:55:54.673  INFO 24396 --- [http-nio-18950-exec-9] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-10 22:55:54.675  INFO 24396 --- [http-nio-18950-exec-9] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-10 22:55:54.683  INFO 24396 --- [http-nio-18950-exec-9] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2023-06-10 22:55:54.745  INFO 24396 --- [http-nio-18950-exec-9] c.s.b.interceptors.JWTInterceptor        : /activity/joined-end
+2023-06-10 22:55:54.777  INFO 24396 --- [http-nio-18950-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-10 22:55:55.632  INFO 24396 --- [http-nio-18950-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-10 22:58:59.533  INFO 24396 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-10 22:58:59.568  INFO 24396 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-10 22:59:08.285  INFO 24052 --- [main] com.save.brbserver.BRBServerApplication  : Starting BRBServerApplication using Java 11.0.12 on LAPTOP-MC8PUNQS with PID 24052 (E:\BRB\brbserver\target\classes started by HP in E:\BRB\brbserver)
+2023-06-10 22:59:08.299  INFO 24052 --- [main] com.save.brbserver.BRBServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-06-10 22:59:10.278  INFO 24052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-10 22:59:10.280  INFO 24052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-10 22:59:10.317  INFO 24052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+2023-06-10 22:59:10.838  INFO 24052 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$d979171] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-06-10 22:59:10.891  INFO 24052 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2023-06-10 22:59:12.056  INFO 24052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 18950 (http)
+2023-06-10 22:59:12.071  INFO 24052 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-10 22:59:12.072  INFO 24052 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-10 22:59:12.257  INFO 24052 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-10 22:59:12.258  INFO 24052 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3782 ms
+2023-06-10 22:59:14.319  INFO 24052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 18950 (http) with context path ''
+2023-06-10 22:59:14.337  INFO 24052 --- [main] com.save.brbserver.BRBServerApplication  : Started BRBServerApplication in 7.141 seconds (JVM running for 8.795)
+2023-06-10 22:59:16.816  INFO 24052 --- [http-nio-18950-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-10 22:59:16.817  INFO 24052 --- [http-nio-18950-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-10 22:59:16.825  INFO 24052 --- [http-nio-18950-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2023-06-10 22:59:16.887  INFO 24052 --- [http-nio-18950-exec-1] c.s.b.interceptors.JWTInterceptor        : /activity/joined-end
+2023-06-10 22:59:16.911  INFO 24052 --- [http-nio-18950-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-10 22:59:17.738  INFO 24052 --- [http-nio-18950-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-10 22:59:53.274  INFO 24052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-10 22:59:53.303  INFO 24052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

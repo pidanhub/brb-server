@@ -40,5 +40,6 @@ public class ResponseEntity<T> {
 	public static final int NETWORK_UNREACHABLE = 1000;
 	public static final int EMAIL_SEND_FAILED = 1001;
 	public static final int VERIFY_CODE_EXIST = 999;
+	public static final int ACTIVITY_ALREADY_END = 1002;
 	
 }

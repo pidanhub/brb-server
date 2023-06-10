@@ -78,8 +78,10 @@ public class ActivitiesController {
 	@PostMapping ("/sign-up")
 	public ResponseEntity<?> signUp (@RequestParam ("username") String username, @RequestParam ("activityId") Long activId) {
 		try {
-			if (activitiesService.signUpActivity(username, activId))
+			if (activitiesService.signUpActivity(username, activId) == 0)
 				return new ResponseEntity<>(ResponseEntity.SUCCESS, true, "报名成功");
+			else
+				return new ResponseEntity<>(ResponseEntity.ACTIVITY_ALREADY_END, false, "活动已经结束");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

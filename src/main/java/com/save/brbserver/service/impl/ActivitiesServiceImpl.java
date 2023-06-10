@@ -73,8 +73,16 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 	}
 	
 	@Override
-	public boolean signUpActivity (String username, Long aId) throws SQLException {
-		return activityDao.signUpActivity(userDao.getUserIdByName(username), aId);
+	public int signUpActivity (String username, Long aId) throws SQLException {
+		Activity activity = activityDao.getActivity(aId);
+		Date date = activity.getStartTime();
+		Date now = new Date();
+		long diff = (now.getTime() - date.getTime()) / (1000 * 3600 * 24) / 7; //几周，以周为单位的长度
+		if (diff >= 1) { // 已经结束，不能参加
+			return -1;
+		}
+		activityDao.signUpActivity(userDao.getUserIdByName(username), aId);
+		return 0;
 	}
 	
 	@Override
@@ -105,20 +113,23 @@ public class ActivitiesServiceImpl implements ActivitiesService {
 		List<Long> toSet = new ArrayList<>();
 		Date now = new Date();
 		for (Activity a : list) {
-			if (end.contains(a))
+			if (end.size() != 0 && end.contains(a))
 				continue;
 			Date date = a.getStartTime();
-			if (now.before(date)) {
+//			if (now.before(date)) {
+//				toSet.add(a.getActivId());
+//				list.remove(a);
+//				continue;
+//			}
+			long diff = (now.getTime() - date.getTime()) / (1000 * 3600 * 24) / 7; //几周，以周为单位的长度
+			if (diff >= 1)
 				toSet.add(a.getActivId());
-				list.remove(a);
-				continue;
+		}
+		for (int i = 0; i < list.size(); ++i) {
+			if (!end.contains(list.get(i)) && !toSet.contains(list.get(i).getActivId())) {
+				list.remove(i);
+				--i;
 			}
-			long diff = Math.abs(date.getTime() - now.getTime()) / (1000 * 3600 * 24) / 7; //几周，以周为单位的长度
-			if (diff < 1) { // 未超过一周，不在已结束列表内
-				list.remove(a);
-			}
-			else
-				toSet.add(a.getActivId());
 		}
 		if (toSet.size() != 0) {
 			new Thread(() -> {

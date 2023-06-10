@@ -20,9 +20,9 @@ public interface ActivityDao {
 	@Insert ("insert into activities(`name`, belongs_to, activ_info, starttime, activ_location) values(#{name},#{belongsTo},#{activInfo},#{startTime},#{activLocation});")
 	@Options (useGeneratedKeys = true, keyProperty = "activId", keyColumn = "activ_id")
 	Long addActivity (Activity activity) throws SQLException;
-
-//	@Select ("")
-//	Long getActivityId () throws SQLException;
+	
+	@Select ("select * from activities where activ_id=#{a};")
+	Activity getActivity (@Param ("a") Long aId) throws SQLException;
 	
 	@Select ("select activ_id,name,activ_info,starttime,activ_location,is_end,o_name as organizationName from activities,organizations " +
 			"where activities.belongs_to=organizations.o_id;")
