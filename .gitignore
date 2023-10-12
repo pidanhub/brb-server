@@ -36,3 +36,5 @@ build/
 ### log ###
 *.log
 *.gz
+
+/src/main/resources/application.yml
